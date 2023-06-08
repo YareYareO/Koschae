@@ -56,7 +56,6 @@ public class Kostengruppe43X: IKostengruppe
             Tabelle5 = _43XHelper.FügeKälteHinzu();
             
         }
-        Obserservable
 
     }
 
