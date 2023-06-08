@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "Koschä (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "Koschä (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}

@@ -1,0 +1,105 @@
+﻿<Page
+    x:Class="Koschä.Views.KGR420Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+        
+            <controls:DataGrid
+                AutoGenerateColumns="False"
+                GridLinesVisibility="Horizontal"
+                ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
+                Grid.Row="0"
+                CellEditEnded="DataGrid_CellEditEnded">
+                <controls:DataGrid.Resources>
+                    <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
+                </controls:DataGrid.Resources>
+                <controls:DataGrid.Columns>
+
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Systemname}" Header="Systemname" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Fläche in m^2" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro m^2" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding WattproM}" Header="Watt pro m^2" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding LeistungGesamt}" Header="Gesamtleistung in kW" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding PreisProkW}" Header="€ pro kW" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" IsReadOnly="True"/>
+                
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+
+            <controls:DataGrid
+                AutoGenerateColumns="False"
+                GridLinesVisibility="Horizontal"
+                ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
+                Grid.Row="1"
+                CellEditEnded="DataGrid_CellEditEnded">
+                <controls:DataGrid.Resources>
+                    <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
+                </controls:DataGrid.Resources>
+                <controls:DataGrid.Columns>
+
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Systemname}" Header="Systemname" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Fläche in m^2" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro m^2" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding WattproM}" Header="Watt pro m^2" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding LeistungGesamt}" Header="Gesamtleistung in kW" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding PreisProkW}" Header="€ pro kW" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" IsReadOnly="True"/>
+
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+
+            <controls:DataGrid
+                AutoGenerateColumns="False"
+                GridLinesVisibility="Horizontal"
+                ItemsSource="{x:Bind ViewModel.kgr.Tabelle3, Mode=OneWay}"
+                Grid.Row="2">
+                <controls:DataGrid.Resources>
+                    <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
+                </controls:DataGrid.Resources>
+                <controls:DataGrid.Columns>
+
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Gesamtleistung in Watt" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro kW" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" IsReadOnly="True"/>
+
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+
+            <controls:DataGrid
+                AutoGenerateColumns="False"
+                GridLinesVisibility="Horizontal"
+                ItemsSource="{x:Bind ViewModel.kgr.Tabelle4, Mode=OneWay}"
+                Grid.Row="3">
+                <controls:DataGrid.Resources>
+                    <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
+                </controls:DataGrid.Resources>
+                <controls:DataGrid.Columns>
+
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Gesamtleistung in Watt" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro kW" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" IsReadOnly="True"/>
+
+                </controls:DataGrid.Columns>
+            
+            </controls:DataGrid>
+
+        </Grid>
+    </ScrollViewer>
+</Page>

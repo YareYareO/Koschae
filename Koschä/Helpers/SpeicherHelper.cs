@@ -1,0 +1,101 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Text.Json;
+using Koschä.Models;
+using System.Diagnostics;
+using Windows.Storage.Pickers;
+using System.Runtime.InteropServices;
+using WinRT;
+using Windows.ApplicationModel.VoiceCommands;
+
+namespace Koschä.Helpers;
+
+class SpeicherHelper
+{
+
+    private static readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Koschä/";
+    private static readonly string projectpath = path + "/Projekte/";
+    private static readonly string preispath = path + "/Preise/";
+    public static void SpeicherDaten()
+    {
+        var alleKGRs = Projekt.GetInstance();
+        
+        if (!Directory.Exists(projectpath))
+        {
+            _ = Directory.CreateDirectory(projectpath);
+        }
+
+        var filepath = projectpath + alleKGRs.Projektname + ".json";
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        var jsonString = JsonSerializer.Serialize(alleKGRs, options);
+
+        Debug.WriteLine(jsonString);
+        File.WriteAllText(filepath, jsonString);
+        speicherPreise();
+    }
+
+
+
+
+    [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
+    public static extern IntPtr GetActiveWindow();
+
+    public static async void LadeDaten()
+    {
+        var picker = new FileOpenPicker();
+        picker.FileTypeFilter.Add("*");
+        var initializeWithWindowWrapper = picker.As<IInitializeWithWindow>();
+        initializeWithWindowWrapper.Initialize(GetActiveWindow());
+        var file = await picker.PickSingleFileAsync();
+
+        if (file != null)
+        {
+            var projektstring = File.ReadAllText(projectpath + file.Name);
+
+            Projekt? projekt =
+                JsonSerializer.Deserialize<Projekt>(projektstring);
+            if (projekt != null)
+            {
+                Projekt.GetInstance().SetInstance(projekt);
+            }
+        }
+        else
+        {
+            Debug.WriteLine("Operation cancelled.");
+        }
+    }
+
+    private static void speicherPreise() // methode später wegmachen. preise soll man nur im json ändern
+    {
+        var alleKGRs = StandardPreise.GetInstance();
+
+        if (!Directory.Exists(preispath))
+        {
+            _ = Directory.CreateDirectory(preispath);
+        }
+
+        var filepath = preispath + "StandardPreise" + ".json";
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        var jsonString = JsonSerializer.Serialize(alleKGRs, options);
+
+        Debug.WriteLine(jsonString);
+        File.WriteAllText(filepath, jsonString);
+    }
+
+    public static void LadePreise()
+    {
+        var preisstring = File.ReadAllText(preispath + "StandardPreise.json");
+        StandardPreise? preise =
+                JsonSerializer.Deserialize<StandardPreise>(preisstring);
+
+        if (preise != null)
+        {
+            StandardPreise.GetInstance().SetInstance(preise);
+        }
+        
+    }
+
+}
