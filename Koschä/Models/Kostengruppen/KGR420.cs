@@ -13,35 +13,35 @@ namespace Koschä.Models.Kostengruppen;
 
 public class Kostengruppe420: IKostengruppe
 {
-    public ObservableCollection<IAdaptivSystem> Tabelle1
+    public ObservableCollection<AdaptivSystem> Tabelle1
     {
         get; set;
     }
-    public ObservableCollection<IAdaptivSystem> Tabelle2
+    public ObservableCollection<AdaptivSystem> Tabelle2
     {
         get; set;
     }
-    public ObservableCollection<ISystem> Tabelle3
+    public ObservableCollection<SystemTeil> Tabelle3
     {
         get; set;
     }
-    public ObservableCollection<ISystem> Tabelle4
+    public ObservableCollection<SystemTeil> Tabelle4
     {
         get; set;
     }
 
     public Kostengruppe420()
     {
-        Tabelle1 = new ObservableCollection<IAdaptivSystem>();
-        Tabelle2 = new ObservableCollection<IAdaptivSystem>();
-        Tabelle3 = new ObservableCollection<ISystem>();
-        Tabelle4 = new ObservableCollection<ISystem>();
+        Tabelle1 = new ObservableCollection<AdaptivSystem>();
+        Tabelle2 = new ObservableCollection<AdaptivSystem>();
+        Tabelle3 = new ObservableCollection<SystemTeil>();
+        Tabelle4 = new ObservableCollection<SystemTeil>();
     }
 
     public void Setup()
     {
-        Tabelle1 = KGRUpdate.AdaptivsystemTabelleUmBereiche(Tabelle1, "420");
-        Tabelle2 = KGRUpdate.AdaptivsystemTabelleUmBereiche(Tabelle2, "420");
+        Tabelle1 = KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(Tabelle1, "420");
+        Tabelle2 = KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(Tabelle2, "420");
         Tabelle3 = _420Helper.SetupTabelle3();
         Tabelle4 = _420Helper.SetupTabelle4();
     }
@@ -49,19 +49,19 @@ public class Kostengruppe420: IKostengruppe
     public int GetAlleTabellenkosten()
     {
         int gesamtkosten = 0;
-        gesamtkosten += KGRGet.SummeGesamtKostenAdaptiv(Tabelle1);
-        gesamtkosten += KGRGet.SummeGesamtKostenAdaptiv(Tabelle2);
-        gesamtkosten += KGRGet.SummeGesamtKostenEinfach(Tabelle3);
-        gesamtkosten += KGRGet.SummeGesamtKostenEinfach(Tabelle4);
+        gesamtkosten += SystemGet<AdaptivSystem>.SummeGesamtKosten(Tabelle1);
+        gesamtkosten += SystemGet<AdaptivSystem>.SummeGesamtKosten(Tabelle2);
+        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle3);
+        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle4);
         return gesamtkosten;
     }
 
     public void UpdateTabelle3()
     {
 
-        Tabelle3[0].Anzahl = KGRGet.SummeKW(Tabelle1);
-        Tabelle3[1].Anzahl = KGRGet.SummeKW(Tabelle2);
-        Tabelle4[0].Anzahl = KGRGet.SummeAnzahl(Tabelle3);
+        Tabelle3[0].Anzahl = AdaptivSysGet<AdaptivSystem>.SummeKW(Tabelle1);
+        Tabelle3[1].Anzahl = AdaptivSysGet<AdaptivSystem>.SummeKW(Tabelle2);
+        Tabelle4[0].Anzahl = SystemGet<SystemTeil>.SummeAnzahl(Tabelle3);
 
 
     }

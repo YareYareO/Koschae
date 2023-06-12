@@ -48,10 +48,10 @@ public class Kostengruppe43X: IKostengruppe
     public void Setup()
     {
         
-        Tabelle1 = ConvertTabelleTo.DoppelSystemTabelle(KGRUpdate.SystemTabelleUmBereiche(ConvertTabelleTo.ISystemTabelle(Tabelle1), "431"));
-        Tabelle3 = ConvertTabelleTo.AktivSystemTabelleVonISystem(KGRUpdate.SystemTabelleUmBereiche(ConvertTabelleTo.ISystemTabelleVonAktiv(Tabelle3), "432"));
+        Tabelle1 = KGRUpdate<DoppelSystem>.SystemTabelleUmBereiche(Tabelle1, "431");
+        Tabelle3 = KGRUpdate<AktivFlächenSystem>.SystemTabelleUmBereiche(Tabelle3, "432");
 
-        if (KGRGet.IstTabelleLeer(Tabelle5))
+        if (SystemGet<DoppelSystem>.IstTabelleLeer(Tabelle5))
         {
             Tabelle5 = _43XHelper.FügeKälteHinzu();
             

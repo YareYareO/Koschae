@@ -7,51 +7,45 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using Koschä.Models.Interface;
 
 namespace Koschä.Models.Elemente;
-public partial class AktivFlächenSystem: ObservableObject, IAdaptivSystem
+public partial class AktivFlächenSystem: AdaptivSystem
 {
     
     // Diese Klasse wird nur in der Kostengruppe 43X in der Tabelle Kältetechnische Anlagen benutzt. Wie die geerbten Variabeln, wie anzahl und preis, genutzt werden wird in den kommentaren festgehalten
-
-
-    [ObservableProperty]
-    private string name;
-
-    [ObservableProperty]
-    private string systemSpezifikation;
-
-
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(TotalPreis))]
     [NotifyPropertyChangedFor(nameof(LeistungGesamt))]
-    private int anzahl; //hier behandelte HNF (Ganze Fläche)
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(TotalPreis))]
-    [NotifyPropertyChangedFor(nameof(LeistungGesamt))]
-    private int preis; // spKälteleistung in watt
+    private int preis; // spKälteleistung in watt   
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(LeistungGesamt))]
     [NotifyPropertyChangedFor(nameof(TotalPreis))]
     private double belegungsfaktor;
 
-    public int TotalPreis => (int) (anzahl * belegungsfaktor); // totalpreis == aktive Fläche
-    public int LeistungGesamt => (int) (preis * anzahl * belegungsfaktor) / 1000; //Kälteleistung in kW
+    public new int TotalPreis => (int) (Anzahl * belegungsfaktor); // totalpreis == aktive Fläche
+    public new int LeistungGesamt => (int) (preis * Anzahl * belegungsfaktor) / 1000; //Kälteleistung in kW
 
     public AktivFlächenSystem()
     {
-        name = "???";
-        anzahl = 0;
+        Name = "???";
+        Anzahl = 0;
         preis = 0;
-        systemSpezifikation = string.Empty;
+        Systemname = string.Empty;
         belegungsfaktor = 0.7;
     }
     public AktivFlächenSystem(string n, int a, int p)
     {
-        name = n;
-        anzahl = a;
+        Name = n;
+        Anzahl = a;
         preis = p;
-        systemSpezifikation = string.Empty;
+        Systemname = string.Empty;
+        belegungsfaktor = 0.7;
+    }
+    public AktivFlächenSystem(Bereich bereich, int p)
+    {
+        Name = bereich.Name;
+        Anzahl = bereich.Anzahl;
+        preis = p;
+        Systemname = string.Empty;
         belegungsfaktor = 0.7;
     }
 }

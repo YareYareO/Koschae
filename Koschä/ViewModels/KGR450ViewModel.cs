@@ -7,6 +7,7 @@ using Koschä.Core.Contracts.Services;
 using Koschä.Core.Models;
 using Koschä.Helpers.KGRHelper;
 using Koschä.Models;
+using Koschä.Models.Elemente;
 using Koschä.Models.Kostengruppen;
 
 namespace Koschä.ViewModels;
@@ -32,7 +33,7 @@ public class KGR450ViewModel : ObservableRecipient, INavigationAware
 
     public string UpdatedText()
     {
-        return KGRGet.SummeGesamtKostenEinfach(kgr.Tabelle).ToString();
+        return SystemGet<SystemTeil>.SummeGesamtKosten(kgr.Tabelle).ToString();
     }
 
 }

@@ -112,22 +112,22 @@ internal class StandardPreise
         { "Teeküchen", 50}
     };
     [JsonInclude]
-    public Dictionary<string, int[] > KGR420 = new()
+    public Dictionary<string, int > KGR420 = new()
     {
-        { "Büroflächen", new int[] {35,50} },
-        { "Gastronomie", new int[] { 35, 50 } },
-        { "Küche", new int[] { 35, 50 } },
-        { "WC", new int[] { 35, 50 } },
-        { "PuMi", new int[] { 35, 50 } },
-        { "EDV", new int[] { 35, 50 } },
-        { "Flur und Nebenräume", new int[] { 35, 50 } },
-        { "Aufzüge", new int[] { 35, 50 } },
-        { "Lager / zugehörige Nebenräume", new int[] { 35, 50 } },
-        { "Technik",  new int[] { 35, 50 } },
-        { "Garage", new int[] { 35, 50 } },
-        { "Rampe", new int[] { 35, 50 } },
-        { "Müllraum", new int[] { 35, 50 } },
-        { "Foyer", new int[] { 35, 50 } },
-        { "Teeküchen", new int[] { 35, 50}}
+        { "Büroflächen", 35 },
+        { "Gastronomie", 35 },
+        { "Küche", 35 },
+        { "WC", 35 },
+        { "PuMi", 35 },
+        { "EDV", 35 },
+        { "Flur und Nebenräume", 35 },
+        { "Aufzüge", 35 },
+        { "Lager / zugehörige Nebenräume", 35 },
+        { "Technik", 35 },
+        { "Garage", 35 },
+        { "Rampe", 35 },
+        { "Müllraum", 35 },
+        { "Foyer", 35 },
+        { "Teeküchen", 35 }
     };
 }

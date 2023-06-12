@@ -8,20 +8,13 @@ using Koschä.Models.Interface;
 
 namespace Koschä.Models.Elemente;
 
-partial class AdaptivSystem: ObservableObject, IAdaptivSystem
+public partial class AdaptivSystem: SystemTeil, IAdaptivSystem
 {
-    [ObservableProperty]
-    private string name;
-
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(TotalPreis))]
     [NotifyPropertyChangedFor(nameof(LeistungGesamt))]
     private int anzahl;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(TotalPreis))]
-    private int preis;
 
     [ObservableProperty]
     private string systemname;
@@ -35,25 +28,27 @@ partial class AdaptivSystem: ObservableObject, IAdaptivSystem
     [NotifyPropertyChangedFor(nameof(TotalPreis))]
     private int preisProkW;
 
-    public int LeistungGesamt => (WattproM * anzahl)/1000;
+    public int LeistungGesamt => (WattproM * anzahl) / 1000;
 
-    public int TotalPreis => WirdMitMeterBerechnet() ? (anzahl * preis) : (LeistungGesamt * preisProkW);
+    public new int TotalPreis => WirdMitMeterBerechnet() ? (anzahl * Preis) : (LeistungGesamt * preisProkW);
 
     public AdaptivSystem()
     {
-        name = "???";
+        Name = "???";
         anzahl = 0;
-        preis = 0;
+        Preis = 0;
         systemname = string.Empty;
         WattproM = 0;
+        preisProkW = 0;
     }
-    public AdaptivSystem(Bereich bereich, int meterp, int wattp)
+    public AdaptivSystem(Bereich bereich, int wattp)
     {
-        name = bereich.Name;
+        Name = bereich.Name;
         anzahl = bereich.Anzahl;
-        preis = meterp;
+        Preis = 50;
         wattproM = wattp;
         systemname = string.Empty;
+        preisProkW = 0;
     }
     private bool WirdMitMeterBerechnet()
     {

@@ -7,38 +7,42 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using Koschä.Models.Interface;
 
 namespace Koschä.Models.Elemente;
-public partial class DoppelSystem: ObservableObject, ISystem
+public partial class DoppelSystem: SystemTeil
 {
-    [ObservableProperty]
-    private string name;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(TotalPreis))]
-    private int anzahl;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(TotalPreis))]
-    private int preis;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(TotalPreis))]
     private int zweiterWert;
 
 
-    public int TotalPreis => anzahl * preis * zweiterWert;
+    public new int TotalPreis => Anzahl * Preis * zweiterWert;
 
     public DoppelSystem(string n, int a, int p)
     {
-        name = n;
-        anzahl = a;
-        preis = p;
+        Name = n;
+        Anzahl = a;
+        Preis = p;
+        zweiterWert = 0;
+    }
+    public DoppelSystem(Bereich bereich, int p)
+    {
+        Name = bereich.Name;
+        Anzahl = bereich.Anzahl;
+        Preis = p;
         zweiterWert = 0;
     }
     public DoppelSystem(string n, int a, int p, int z)
     {
-        name = n;
-        anzahl = a;
-        preis = p;
+        Name = n;
+        Anzahl = a;
+        Preis = p;
         zweiterWert = z;
+    }
+    public DoppelSystem()
+    {
+        Name = "???";
+        Anzahl = 0;
+        Preis = 0;
+        zweiterWert = 0;
     }
 }

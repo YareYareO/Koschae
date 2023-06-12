@@ -13,25 +13,25 @@ namespace Koschä.Models.Kostengruppen;
 
 public class Kostengruppe450: IKostengruppe
 {
-    public ObservableCollection<ISystem> Tabelle
+    public ObservableCollection<SystemTeil> Tabelle
     {
         get; set;
     }
 
     public Kostengruppe450()
     {
-        Tabelle = new ObservableCollection<ISystem>();
+        Tabelle = new ObservableCollection<SystemTeil>();
     }
 
     public void Setup()
     {
-        Tabelle = KGRUpdate.SystemTabelleUmBereiche(Tabelle, "450");
+        Tabelle = KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(Tabelle, "450");
     }
 
     public int GetAlleTabellenkosten()
     {
         int gesamtkosten = 0;
-        gesamtkosten += KGRGet.SummeGesamtKostenEinfach(Tabelle);
+        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle);
         return gesamtkosten;
     }
 

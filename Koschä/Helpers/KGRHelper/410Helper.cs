@@ -12,7 +12,7 @@ using Windows.Networking.PushNotifications;
 namespace Koschä.Helpers.KGRHelper;
 internal class _410Helper
 {
-    public static ObservableCollection<ISystem> UpdateTabelle1(ObservableCollection<ISystem> tabelle)
+    public static ObservableCollection<SystemTeil> UpdateTabelle1(ObservableCollection<SystemTeil> tabelle)
     {
 
         string[] namen = { "Dachflächen", "Terassen"};
@@ -28,7 +28,7 @@ internal class _410Helper
         return tabelle;
     }
 
-    public static ObservableCollection<ISystem> SetupTabelle2(ObservableCollection<ISystem> tabelle)
+    public static ObservableCollection<SystemTeil> SetupTabelle2(ObservableCollection<SystemTeil> tabelle)
     {
 
         if (!tabelle.Any(system => system.Name == "Druckerhöhungsanlagen"))

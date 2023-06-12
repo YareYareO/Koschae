@@ -15,19 +15,19 @@ namespace Koschä.Models.Kostengruppen;
 public partial class Kostengruppe410 : IKostengruppe
 {
 
-    public ObservableCollection<ISystem> Tabelle1;
+    public ObservableCollection<SystemTeil> Tabelle1;
 
-    public ObservableCollection<ISystem> Tabelle2;
+    public ObservableCollection<SystemTeil> Tabelle2;
 
     public Kostengruppe410() 
     {
-        Tabelle1 = new ObservableCollection<ISystem>();
-        Tabelle2 = new ObservableCollection<ISystem>();
+        Tabelle1 = new ObservableCollection<SystemTeil>();
+        Tabelle2 = new ObservableCollection<SystemTeil>();
     }
 
     public void Setup()
     {
-        Tabelle1 = KGRUpdate.SystemTabelleUmBereiche(Tabelle1, "410");
+        Tabelle1 = KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(Tabelle1, "410");
         Tabelle1 = _410Helper.UpdateTabelle1(Tabelle1); //gleichzeitig auch setup
         Tabelle2 = _410Helper.SetupTabelle2(Tabelle2);
     }
@@ -35,8 +35,8 @@ public partial class Kostengruppe410 : IKostengruppe
     public int GetAlleTabellenkosten()
     {
         int gesamtkosten = 0;
-        gesamtkosten += KGRGet.SummeGesamtKostenEinfach(Tabelle1);
-        gesamtkosten += KGRGet.SummeGesamtKostenEinfach(Tabelle2);
+        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle1);
+        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle2);
         return gesamtkosten;
     }
 
@@ -48,7 +48,7 @@ public partial class Kostengruppe410 : IKostengruppe
     }
     public string UpdatedText()
     {
-        return (KGRGet.SummeGesamtKostenEinfach(Tabelle1) +
-                            KGRGet.SummeGesamtKostenEinfach(Tabelle2)).ToString();
+        return (SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle1) +
+                            SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle2)).ToString();
     }
 }

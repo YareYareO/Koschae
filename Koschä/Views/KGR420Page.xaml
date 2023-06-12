@@ -57,7 +57,6 @@
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro m^2" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding WattproM}" Header="Watt pro m^2" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding LeistungGesamt}" Header="Gesamtleistung in kW" IsReadOnly="True"/>
-                    <controls:DataGridTextColumn Binding="{Binding PreisProkW}" Header="€ pro kW" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" IsReadOnly="True"/>
 
                 </controls:DataGrid.Columns>

@@ -11,17 +11,17 @@ using Koschä.Models.Interface;
 namespace Koschä.Helpers.KGRHelper;
 internal class _420Helper
 {
-    public static ObservableCollection<ISystem> SetupTabelle3()
+    public static ObservableCollection<SystemTeil> SetupTabelle3()
     {
-        ObservableCollection<ISystem> tabelle = new ObservableCollection<ISystem>();
+        ObservableCollection<SystemTeil> tabelle = new ObservableCollection<SystemTeil>();
 
-        ISystem s1 = new SystemTeil("Statische HZG / dynamische HZG", 
-            a: KGRGet.SummeKW(Projekt.GetInstance().KGR420.Tabelle1),
+        SystemTeil s1 = new SystemTeil("Statische HZG / dynamische HZG", 
+            a: AdaptivSysGet<AdaptivSystem>.SummeKW(Projekt.GetInstance().KGR420.Tabelle1),
             p: 300);
-        ISystem s2 = new SystemTeil("Thermoaktive Elemente",
-            a: KGRGet.SummeKW(Projekt.GetInstance().KGR420.Tabelle2),
+        SystemTeil s2 = new SystemTeil("Thermoaktive Elemente",
+            a: AdaptivSysGet<AdaptivSystem>.SummeKW(Projekt.GetInstance().KGR420.Tabelle2),
             p: 300);
-        ISystem s3 = new SystemTeil("Dynamische Wärme",
+        SystemTeil s3 = new SystemTeil("Dynamische Wärme",
             a: _43XHelper.GetSummeDynHeizung(),
             p: 185);
 
@@ -32,12 +32,12 @@ internal class _420Helper
         return tabelle;
     }
 
-    public static ObservableCollection<ISystem> SetupTabelle4()
+    public static ObservableCollection<SystemTeil> SetupTabelle4()
     {
-        ObservableCollection<ISystem> tabelle4 = new ObservableCollection<ISystem>();
+        ObservableCollection<SystemTeil> tabelle4 = new ObservableCollection<SystemTeil>();
 
         SystemTeil zeile = new SystemTeil("Fernwärmestation",
-            a: KGRGet.SummeAnzahl(Projekt.GetInstance().KGR420.Tabelle3),
+            a: SystemGet<SystemTeil>.SummeAnzahl(Projekt.GetInstance().KGR420.Tabelle3),
             p:80);
 
         tabelle4.Add(zeile);
