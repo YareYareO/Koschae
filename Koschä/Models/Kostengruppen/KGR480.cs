@@ -5,41 +5,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Koschä.Helpers.KGRHelper;
-using Koschä.Helpers;
 using Koschä.Models.Elemente;
-using Koschä.Models.Interface;
-using System.Diagnostics;
-using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Koschä.Models.Kostengruppen;
-public partial class Kostengruppe410 : IKostengruppe
+public class Kostengruppe480490: IKostengruppe
 {
-
-    public ObservableCollection<SystemTeil> Tabelle1;
-
+    public ObservableCollection<ProzentSystem> Tabelle1;
     public ObservableCollection<SystemTeil> Tabelle2;
 
-    public Kostengruppe410() 
+    public Kostengruppe480490()
     {
-        Tabelle1 = new ObservableCollection<SystemTeil>();
+        Tabelle1 = new ObservableCollection<ProzentSystem>();
         Tabelle2 = new ObservableCollection<SystemTeil>();
     }
 
     public void Setup()
     {
-        Tabelle1 = KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(Tabelle1, "410");
-        if(Tabelle2.Count == 0) Tabelle2 = _410Helper.SetupTabelle2(Tabelle2);
+        if (Tabelle1.Count == 0) Tabelle1 = _480Helper.SetupTabelle();
+        else Tabelle1 = _480Helper.UpdateTabelle(Tabelle1);
     }
 
     public int GetAlleTabellenkosten()
     {
         int gesamtkosten = 0;
-        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle1);
+        gesamtkosten += SystemGet<ProzentSystem>.SummeGesamtKosten(Tabelle1)/100;
         gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle2);
         return gesamtkosten;
     }
 
-    public void Tab2AddSystem()
+    public void FügNeuesSystemHinzu()
     {
         Tabelle2.Add(new SystemTeil());
     }

@@ -8,6 +8,7 @@ using Koschä.Helpers.KGRHelper;
 using Koschä.Helpers;
 using Koschä.Models.Elemente;
 using Koschä.Models.Interface;
+using System.Diagnostics;
 
 namespace Koschä.Models.Kostengruppen;
 
@@ -40,10 +41,11 @@ public class Kostengruppe420: IKostengruppe
 
     public void Setup()
     {
+        // DIE FLÄCHENWWERTE DER BEREICHE WERDEN NICHT GEUPDATED ???? Nur hier TODO:
         Tabelle1 = KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(Tabelle1, "420");
         Tabelle2 = KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(Tabelle2, "420");
-        Tabelle3 = _420Helper.SetupTabelle3();
-        Tabelle4 = _420Helper.SetupTabelle4();
+        if(Tabelle3.Count == 0) Tabelle3 = _420Helper.SetupTabelle3();
+        if (Tabelle4.Count == 0) Tabelle4 = _420Helper.SetupTabelle4();
     }
 
     public int GetAlleTabellenkosten()
@@ -56,13 +58,20 @@ public class Kostengruppe420: IKostengruppe
         return gesamtkosten;
     }
 
-    public void UpdateTabelle3()
+    public void UpdateTabelle3() //woanders hin vielleicht
     {
-
         Tabelle3[0].Anzahl = AdaptivSysGet<AdaptivSystem>.SummeKW(Tabelle1);
         Tabelle3[1].Anzahl = AdaptivSysGet<AdaptivSystem>.SummeKW(Tabelle2);
+
         Tabelle4[0].Anzahl = SystemGet<SystemTeil>.SummeAnzahl(Tabelle3);
+    }
 
-
+    public void Tab3AddSystem()
+    {
+        Tabelle3.Add(new SystemTeil());
+    }
+    public void Tab4AddSystem()
+    {
+        Tabelle4.Add(new SystemTeil());
     }
 }

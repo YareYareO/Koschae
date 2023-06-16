@@ -28,13 +28,4 @@ public class KGR410ViewModel : ObservableRecipient, INavigationAware
 
     public void OnNavigatedFrom() {}
 
-    public void FügNeuesSystemHinzu()
-    {
-        kgr.FügNeuesSystemHinzu();
-    }
-
-    public string UpdatedText()
-    {
-        return kgr.UpdatedText();
-    }
 }

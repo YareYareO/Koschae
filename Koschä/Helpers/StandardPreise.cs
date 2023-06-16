@@ -49,6 +49,12 @@ internal class StandardPreise
     };
 
     [JsonInclude]
+    public Dictionary<string, int> KGR420 = new()
+    {
+        { "Büroflächen", 0 }
+    };
+
+    [JsonInclude]
     public Dictionary<string, int> KGR431 = new()
     {
         { "Büroflächen", 3},
@@ -93,6 +99,26 @@ internal class StandardPreise
     };
 
     [JsonInclude]
+    public Dictionary<string, int> KGR440 = new()
+    {
+        { "Büroflächen", 130},
+        { "Gastronomie", 120},
+        { "Küche", 12},
+        { "WC", 90},
+        { "PuMi", 90},
+        { "EDV", 60},
+        { "Flur und Nebenräume", 60},
+        { "Aufzüge", 25},
+        { "Lager / zugehörige Nebenräume", 45},
+        { "Technik", 45},
+        { "Garage", 45},
+        { "Rampe", 45},
+        { "Müllraum", 35},
+        { "Foyer", 100},
+        { "Teeküchen", 100}
+    };
+
+    [JsonInclude]
     public Dictionary<string, int> KGR450 = new()
     {
         { "Büroflächen", 50 },
@@ -111,23 +137,25 @@ internal class StandardPreise
         { "Foyer", 50 },
         { "Teeküchen", 50}
     };
+
     [JsonInclude]
-    public Dictionary<string, int > KGR420 = new()
+    public Dictionary<string, int> KGR470 = new()
     {
-        { "Büroflächen", 35 },
-        { "Gastronomie", 35 },
-        { "Küche", 35 },
-        { "WC", 35 },
-        { "PuMi", 35 },
-        { "EDV", 35 },
-        { "Flur und Nebenräume", 35 },
-        { "Aufzüge", 35 },
-        { "Lager / zugehörige Nebenräume", 35 },
-        { "Technik", 35 },
-        { "Garage", 35 },
-        { "Rampe", 35 },
-        { "Müllraum", 35 },
-        { "Foyer", 35 },
-        { "Teeküchen", 35 }
+        { "Büroflächen", 50 },
+        { "Gastronomie", 50 },
+        { "Küche", 50 },
+        { "WC", 50 },
+        { "PuMi", 50 },
+        { "EDV", 50 },
+        { "Flur und Nebenräume", 50 },
+        { "Aufzüge", 50 },
+        { "Lager / zugehörige Nebenräume", 50 },
+        { "Technik", 50 },
+        { "Garage", 225 },
+        { "Rampe", 50 },
+        { "Müllraum", 50 },
+        { "Foyer", 50 },
+        { "Teeküchen", 50 }
     };
+
 }

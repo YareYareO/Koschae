@@ -27,10 +27,7 @@
                 GridLinesVisibility="Horizontal"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
                 Grid.Column="0"
-                Grid.Row="0"
-                CellEditEnded="DataGrid_CellEditEnded"
-                
-                >
+                Grid.Row="0">
                 <controls:DataGrid.Resources>
                     <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
                 </controls:DataGrid.Resources>
@@ -40,22 +37,16 @@
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Fläche in m^2" />
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro m^2" />
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt"/>
-                    <!-- IsReadOnly="True" -->
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
-
-            <Button Name="Tabelle1KGR410Button" Content="Hi" Grid.Row="1" Grid.Column="0" Click="Tabelle1KGR410Button_Click"/>
-            <TextBlock Name="Kosten" Grid.Row="2" Grid.Column="0" Text=""/>
 
             <controls:DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="Horizontal"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
                 Grid.Column="1"
-                Grid.Row="0"
-                CellEditEnded="DataGrid_CellEditEnded"
-                >
+                Grid.Row="0">
                 <controls:DataGrid.Resources>
                     <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
                 </controls:DataGrid.Resources>
@@ -67,6 +58,8 @@
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+
+            <Button Content="Neues System" Click="Button_Click" Grid.Row="1" Grid.Column="1"/>
 
         </Grid>
 

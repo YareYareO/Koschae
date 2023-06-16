@@ -28,6 +28,7 @@ public class _43XHelper
         return tabelle;
     }
 
+
     private static RLTSystem FindRLTSystem(ObservableCollection<RLTSystem> tabelle, string s)
     {
         foreach (var zeile in tabelle)
@@ -87,14 +88,14 @@ public class _43XHelper
         return summeDynHeizung;
     }
 
-    public static ObservableCollection<DoppelSystem> FügeKälteHinzu()
+    public static ObservableCollection<DoppelDoubleSystem> FügeKälteHinzu()
     {
-        ObservableCollection<DoppelSystem> tabelle = new ObservableCollection<DoppelSystem>();
+        ObservableCollection<DoppelDoubleSystem> tabelle = new ObservableCollection<DoppelDoubleSystem>();
 
-        DoppelSystem doppelsystem = new DoppelSystem("Statische Kälte", a: GetSummeStatKälte(), p: 650, z: 1);
-        DoppelSystem doppelsystem2 = new DoppelSystem("Dynamische Kälte", a: GetSummeDynKälte(), p: 100, z: 1);
-        DoppelSystem doppelsystem3 = new DoppelSystem("Grundlastkälte Turbocor", a: GetSummeStatKälte() + GetSummeStatKälte(), p: 175, z: 1);
-        DoppelSystem doppelsystem4 = new DoppelSystem("Dynamische Kälte", a: (int)((GetSummeStatKälte() + GetSummeStatKälte())*(1+1/3.1)), p: 150, z: 1);
+        DoppelDoubleSystem doppelsystem = new DoppelDoubleSystem("Statische Kälte", a: GetSummeStatKälte(), p: 650, z: 0.8);
+        DoppelDoubleSystem doppelsystem2 = new DoppelDoubleSystem("Dynamische Kälte", a: GetSummeDynKälte(), p: 100, z: 0.8);
+        DoppelDoubleSystem doppelsystem3 = new DoppelDoubleSystem("Grundlastkälte Turbocor", a: GetSummeStatKälte() + GetSummeStatKälte(), p: 175, z: 0.8);
+        DoppelDoubleSystem doppelsystem4 = new DoppelDoubleSystem("Dynamische Kälte", a: (int)((GetSummeStatKälte() + GetSummeStatKälte())*(1+1/3.1)), p: 150, z: 0.8);
 
         tabelle.Add(doppelsystem);
         tabelle.Add(doppelsystem2);
@@ -103,7 +104,7 @@ public class _43XHelper
 
         return tabelle;
     }
-    public static ObservableCollection<DoppelSystem> UpdateKälte(ObservableCollection<DoppelSystem> tabelle)
+    public static ObservableCollection<DoppelDoubleSystem> UpdateKälte(ObservableCollection<DoppelDoubleSystem> tabelle)
     {
         tabelle[0].Anzahl = GetSummeStatKälte();
         tabelle[1].Anzahl = GetSummeDynKälte();

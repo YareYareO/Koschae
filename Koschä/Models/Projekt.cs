@@ -33,13 +33,21 @@ internal class Projekt
         KGR410 = new Kostengruppe410();
         KGR420 = new Kostengruppe420();
         KGR43X = new Kostengruppe43X();
+        KGR440 = new Kostengruppe440();
         KGR450 = new Kostengruppe450();
+        KGR460 = new Kostengruppe460();
+        KGR470 = new Kostengruppe470();
+        KGR480490 = new Kostengruppe480490();
 
-        AlleKostengruppen = new IKostengruppe[4];
+        AlleKostengruppen = new IKostengruppe[8];
         AlleKostengruppen[0] = KGR410;
         AlleKostengruppen[1] = KGR420;
         AlleKostengruppen[2] = KGR43X;
-        AlleKostengruppen[3] = KGR450;
+        AlleKostengruppen[3] = KGR440;
+        AlleKostengruppen[4] = KGR450;
+        AlleKostengruppen[5] = KGR460;
+        AlleKostengruppen[6] = KGR470;
+        AlleKostengruppen[7] = KGR480490;
     }
 
     public string Projektname = "Beispielname";
@@ -57,10 +65,26 @@ internal class Projekt
     {
         get; private set;
     }
+    public Kostengruppe440 KGR440
+    {
+        get; private set;
+    }
     public Kostengruppe450 KGR450
     {
         get; private set;
     }
+    public Kostengruppe460 KGR460
+    {
+        get; private set;
+    }
+    public Kostengruppe470 KGR470
+    {
+        get; private set;
+    }
 
-    
+    public Kostengruppe480490 KGR480490
+    {
+        get; private set;
+    }
+
 }

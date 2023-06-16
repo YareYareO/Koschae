@@ -27,6 +27,6 @@ public sealed partial class KGR43XPage : Page
 
     private void AddButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        ViewModel.kgr.FügNeuesSystemHinzu();
+        ViewModel.kgr.Tab4AddSystem();
     }
 }

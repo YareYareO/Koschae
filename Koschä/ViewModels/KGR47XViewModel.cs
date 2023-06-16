@@ -5,31 +5,23 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using Koschä.Contracts.ViewModels;
 using Koschä.Core.Contracts.Services;
 using Koschä.Core.Models;
+using Koschä.Models;
+using Koschä.Models.Kostengruppen;
 
 namespace Koschä.ViewModels;
 
 public class KGR47XViewModel : ObservableRecipient, INavigationAware
 {
-    private readonly ISampleDataService _sampleDataService;
+    public Kostengruppe470 kgr;
 
-    public ObservableCollection<SampleOrder> Source { get; } = new ObservableCollection<SampleOrder>();
-
-    public KGR47XViewModel(ISampleDataService sampleDataService)
+    public KGR47XViewModel()
     {
-        _sampleDataService = sampleDataService;
+        kgr = Projekt.GetInstance().KGR470;
     }
 
-    public async void OnNavigatedTo(object parameter)
+    public void OnNavigatedTo(object parameter)
     {
-        Source.Clear();
-
-        // TODO: Replace with real data.
-        var data = await _sampleDataService.GetGridDataAsync();
-
-        foreach (var item in data)
-        {
-            Source.Add(item);
-        }
+        kgr.Setup();
     }
 
     public void OnNavigatedFrom()

@@ -20,7 +20,7 @@ internal class _420Helper
             p: 300);
         SystemTeil s2 = new SystemTeil("Thermoaktive Elemente",
             a: AdaptivSysGet<AdaptivSystem>.SummeKW(Projekt.GetInstance().KGR420.Tabelle2),
-            p: 300);
+            p: 650);
         SystemTeil s3 = new SystemTeil("Dynamische Wärme",
             a: _43XHelper.GetSummeDynHeizung(),
             p: 185);
@@ -31,6 +31,7 @@ internal class _420Helper
 
         return tabelle;
     }
+
 
     public static ObservableCollection<SystemTeil> SetupTabelle4()
     {

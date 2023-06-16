@@ -12,22 +12,6 @@ using Windows.Networking.PushNotifications;
 namespace Koschä.Helpers.KGRHelper;
 internal class _410Helper
 {
-    public static ObservableCollection<SystemTeil> UpdateTabelle1(ObservableCollection<SystemTeil> tabelle)
-    {
-
-        string[] namen = { "Dachflächen", "Terassen"};
-
-        if (!tabelle.Any(system => system.Name == namen[0] | system.Name == namen[1]))
-        {
-            foreach (var name in namen)
-            {
-                tabelle.Add(new SystemTeil(new Bereich(name), StandardPreise.GetInstance().KGR410[name]));
-            }
-        }
-
-        return tabelle;
-    }
-
     public static ObservableCollection<SystemTeil> SetupTabelle2(ObservableCollection<SystemTeil> tabelle)
     {
 

@@ -4,45 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Koschä.Models.Interface;
 
 namespace Koschä.Models.Elemente;
-public partial class DoppelSystem: SystemTeil
+public partial class DoppelDoubleSystem : SystemTeil
 {
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(TotalPreis))]
-    private int zweiterWert;
+    private double zweiterWert;
 
 
-    public new int TotalPreis => Anzahl * Preis * zweiterWert;
+    public new int TotalPreis => (int) (Anzahl * Preis * zweiterWert);
 
-    public DoppelSystem(string n, int p)
+    public DoppelDoubleSystem(string n, int p)
     {
         Name = n;
         Anzahl = 0;
         Preis = p;
-        zweiterWert = 0;
+        zweiterWert = 0.0;
     }
-    public DoppelSystem(Bereich bereich, int p)
+    public DoppelDoubleSystem(Bereich bereich, int p)
     {
         Name = bereich.Name;
         Anzahl = bereich.Anzahl;
         Preis = p;
-        zweiterWert = 0;
+        zweiterWert = 0.0;
     }
-    public DoppelSystem(string n, int a, int p, int z)
+    public DoppelDoubleSystem(string n, int a, int p, double z)
     {
         Name = n;
         Anzahl = a;
         Preis = p;
         zweiterWert = z;
     }
-    public DoppelSystem()
+    public DoppelDoubleSystem()
     {
         Name = "???";
         Anzahl = 0;
         Preis = 0;
-        zweiterWert = 0;
+        zweiterWert = 0.0;
     }
 }

@@ -21,7 +21,18 @@ internal class KGRUpdate<T> where T : SystemTeil, new()
         {
             if (!tabelle.Any(system => (system.Name == bereich.Name)) & bereich.Anzahl != 0)
             {
-                object[] constructorParams = { bereich, dict[bereich.Name] };
+                object[] constructorParams = new object[2];
+                try
+                {
+                    constructorParams[0] = bereich;
+                    constructorParams[1] = dict[bereich.Name];
+                }
+                catch (KeyNotFoundException)
+                {
+                    constructorParams[0] = bereich;
+                    constructorParams[1] = 0;
+                }
+                
                 if (Activator.CreateInstance(typeof(T), constructorParams) is T instance)
                 {
                     tabelle.Add(instance);
@@ -30,6 +41,14 @@ internal class KGRUpdate<T> where T : SystemTeil, new()
                 {
                     Debug.WriteLine("Instanz ist null");
                 }
+            }
+            else if (tabelle.Any(system => (system.Name == bereich.Name))) //updated die Fläche jeder Zeile
+            {
+                foreach (T zeile in tabelle)
+                {
+                    if (zeile.Name == bereich.Name) zeile.Anzahl = bereich.Anzahl;
+                }
+                
             }
         }
         return tabelle;
@@ -53,10 +72,17 @@ internal class KGRUpdate<T> where T : SystemTeil, new()
             case "432":
                 dictionary = StandardPreise.GetInstance().KGR432;
                 break;
+            case "440":
+                dictionary = StandardPreise.GetInstance().KGR440;
+                break;
             case "450":
                 dictionary = StandardPreise.GetInstance().KGR450;
+                break;
+            case "470":
+                dictionary = StandardPreise.GetInstance().KGR470;
                 break;
         }
         return dictionary;
     }
+
 }

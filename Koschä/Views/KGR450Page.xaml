@@ -12,13 +12,12 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <controls:DataGrid
             AutoGenerateColumns="False"
             GridLinesVisibility="Horizontal"
             ItemsSource="{x:Bind ViewModel.kgr.Tabelle, Mode=OneWay}"
-            Grid.Row="0"
-            CellEditEnded="DataGrid_CellEditEnded">
+            Grid.Row="0">
             <controls:DataGrid.Resources>
                 <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
             </controls:DataGrid.Resources>
@@ -30,9 +29,5 @@
 
             </controls:DataGrid.Columns>
         </controls:DataGrid>
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1">
-            <Button Click="Button_Click" Content="Neue Zeile"/>
-            <TextBlock Name="Total" Margin="5" Text="AAAAAAAAAA"/>
-        </StackPanel>
     </Grid>
 </Page>

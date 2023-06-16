@@ -20,4 +20,14 @@ public sealed partial class KGR420Page : Page
     {
         ViewModel.kgr.UpdateTabelle3();
     }
+
+    private void AddTab3Button_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        ViewModel.kgr.Tab3AddSystem();
+    }
+
+    private void AddTab4Button_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        ViewModel.kgr.Tab4AddSystem();
+    }
 }

@@ -4,8 +4,6 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace Koschä.Views;
 
-// TODO: Change the grid as appropriate for your app. Adjust the column definitions on DataGridPage.xaml.
-// For more details, see the documentation at https://docs.microsoft.com/windows/communitytoolkit/controls/datagrid.
 public sealed partial class KGR47XPage : Page
 {
     public KGR47XViewModel ViewModel
@@ -17,5 +15,15 @@ public sealed partial class KGR47XPage : Page
     {
         ViewModel = App.GetService<KGR47XViewModel>();
         InitializeComponent();
+    }
+
+    private void ButtonTab3_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        ViewModel.kgr.Tab3AddSystem();
+    }
+
+    private void ButtonTab1_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        ViewModel.kgr.Tab1AddSystem();
     }
 }

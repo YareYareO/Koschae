@@ -18,7 +18,7 @@ internal class SystemGet<S> where S : ISystem
 
         foreach (var zeile in tabelle)
         {
-            kosten += zeile.GetTotalPreis();
+            kosten += zeile.TotalPreis;
         }
         return kosten;
     }
@@ -35,10 +35,4 @@ internal class SystemGet<S> where S : ISystem
         return summe;
     }
 
-    
-
-    public static bool IstTabelleLeer(ObservableCollection<S> tabelle)
-    {
-        return tabelle.Count == 0;
-    }
 }

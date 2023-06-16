@@ -4,22 +4,18 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Koschä.Helpers.KGRHelper;
 using Koschä.Helpers;
+using Koschä.Helpers.KGRHelper;
 using Koschä.Models.Elemente;
-using Koschä.Models.Interface;
-using System.Diagnostics;
-using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Koschä.Models.Kostengruppen;
-public partial class Kostengruppe410 : IKostengruppe
+public class Kostengruppe440: IKostengruppe
 {
-
     public ObservableCollection<SystemTeil> Tabelle1;
 
     public ObservableCollection<SystemTeil> Tabelle2;
 
-    public Kostengruppe410() 
+    public Kostengruppe440()
     {
         Tabelle1 = new ObservableCollection<SystemTeil>();
         Tabelle2 = new ObservableCollection<SystemTeil>();
@@ -27,8 +23,8 @@ public partial class Kostengruppe410 : IKostengruppe
 
     public void Setup()
     {
-        Tabelle1 = KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(Tabelle1, "410");
-        if(Tabelle2.Count == 0) Tabelle2 = _410Helper.SetupTabelle2(Tabelle2);
+        Tabelle1 = KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(Tabelle1, "440");
+        if(Tabelle2.Count == 0) { Tabelle2 = _440Helper.UpdateTabelle2(); }
     }
 
     public int GetAlleTabellenkosten()

@@ -17,7 +17,7 @@ public class ÜbersichtViewModel : ObservableRecipient
 
     public ObservableCollection<TabellenElement> KostenAllerGruppen;
 
-    private readonly string[] kgrnamen = { "KGR 410", "KGR 420", "KGR 43X", "KGR 450" };
+    private readonly string[] kgrnamen = { "KGR 410", "KGR 420", "KGR 43X", "KGR 440", "KGR 450", "KGR 460", "KGR 470", "KGR 480" };
 
     private void fülleTabelle()
     {

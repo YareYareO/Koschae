@@ -16,6 +16,10 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
         
             <controls:DataGrid
                 AutoGenerateColumns="False"
@@ -32,9 +36,9 @@
                     <controls:DataGridTextColumn Binding="{Binding Systemname}" Header="Systemname" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Fläche in m^2" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro m^2" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding PreisProkW}" Header="€ pro kW" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding WattproM}" Header="Watt pro m^2" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding LeistungGesamt}" Header="Gesamtleistung in kW" IsReadOnly="True"/>
-                    <controls:DataGridTextColumn Binding="{Binding PreisProkW}" Header="€ pro kW" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" IsReadOnly="True"/>
                 
                 </controls:DataGrid.Columns>
@@ -72,13 +76,15 @@
                 </controls:DataGrid.Resources>
                 <controls:DataGrid.Columns>
 
-                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Gesamtleistung in Watt" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Gesamtleistung in Watt" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro kW" IsReadOnly="False"/>
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" IsReadOnly="False"/>
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+
+            <Button Content="Neues System" Click="AddTab3Button_Click" Grid.Row="2" Grid.Column="1"/>
 
             <controls:DataGrid
                 AutoGenerateColumns="False"
@@ -90,15 +96,16 @@
                 </controls:DataGrid.Resources>
                 <controls:DataGrid.Columns>
 
-                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Gesamtleistung in Watt" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Gesamtleistung in Watt" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro kW" IsReadOnly="False"/>
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" IsReadOnly="False"/>
 
                 </controls:DataGrid.Columns>
             
             </controls:DataGrid>
 
+            <Button Content="Neues System" Click="AddTab4Button_Click" Grid.Row="3" Grid.Column="1"/>
         </Grid>
     </ScrollViewer>
 </Page>
