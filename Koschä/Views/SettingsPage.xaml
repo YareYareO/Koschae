@@ -64,6 +64,7 @@
             </StackPanel>
             <StackPanel>
                 <TextBox Name="ProjektName" Text="{x:Bind projektReferenz.Projektname}" TextChanged="ProjektName_TextChanged"/>
+                <Button Name="LadeButton" Content="Lade Projekt"  Click="LadeButton_Click"/>
             </StackPanel>
             </StackPanel>
         

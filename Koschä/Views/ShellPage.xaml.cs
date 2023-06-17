@@ -1,5 +1,7 @@
-﻿using Koschä.Contracts.Services;
+﻿using System.Diagnostics;
+using Koschä.Contracts.Services;
 using Koschä.Helpers;
+using Koschä.Models;
 using Koschä.ViewModels;
 
 using Microsoft.UI.Xaml;
@@ -84,8 +86,6 @@ public sealed partial class ShellPage : Page
         SpeicherHelper.SpeicherDaten();
     }
 
-    private void LoadButton_Click(object sender, RoutedEventArgs e)
-    {
-        SpeicherHelper.LadeDaten();
-    }
+
+    
 }

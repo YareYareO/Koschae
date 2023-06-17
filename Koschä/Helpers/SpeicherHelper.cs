@@ -10,6 +10,9 @@ using Windows.Storage.Pickers;
 using System.Runtime.InteropServices;
 using WinRT;
 using Windows.ApplicationModel.VoiceCommands;
+using Koschä.Views;
+using Microsoft.UI.Xaml.Controls;
+using Windows.ApplicationModel.Store;
 
 namespace Koschä.Helpers;
 
@@ -34,7 +37,6 @@ class SpeicherHelper
 
         Debug.WriteLine(jsonString);
         File.WriteAllText(filepath, jsonString);
-        speicherPreise();
     }
 
 
@@ -43,7 +45,7 @@ class SpeicherHelper
     [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto, PreserveSig = true, SetLastError = false)]
     public static extern IntPtr GetActiveWindow();
 
-    public static async void LadeDaten()
+    public static async Task LadeDaten()
     {
         var picker = new FileOpenPicker();
         picker.FileTypeFilter.Add("*");
@@ -68,34 +70,6 @@ class SpeicherHelper
         }
     }
 
-    private static void speicherPreise() // methode später wegmachen. preise soll man nur im json ändern
-    {
-        var alleKGRs = StandardPreise.GetInstance();
-
-        if (!Directory.Exists(preispath))
-        {
-            _ = Directory.CreateDirectory(preispath);
-        }
-
-        var filepath = preispath + "StandardPreise" + ".json";
-        var options = new JsonSerializerOptions { WriteIndented = true };
-        var jsonString = JsonSerializer.Serialize(alleKGRs, options);
-
-        Debug.WriteLine(jsonString);
-        File.WriteAllText(filepath, jsonString);
-    }
-
-    public static void LadePreise()
-    {
-        var preisstring = File.ReadAllText(preispath + "StandardPreise.json");
-        StandardPreise? preise =
-                JsonSerializer.Deserialize<StandardPreise>(preisstring);
-
-        if (preise != null)
-        {
-            StandardPreise.GetInstance().SetInstance(preise);
-        }
-        
-    }
+    
 
 }

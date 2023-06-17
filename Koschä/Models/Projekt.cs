@@ -24,8 +24,9 @@ internal class Projekt
     public void SetInstance(Projekt geladenesProjekt)
     {
         alleKGRs = geladenesProjekt;
-        SetAlleKostenGruppen();
+        alleKGRs.SetAlleKostengruppen();
     }
+    [JsonIgnore]
     public IKostengruppe[] AlleKostengruppen
     {
         get; private set;
@@ -40,11 +41,11 @@ internal class Projekt
         KGR460 = new Kostengruppe460();
         KGR470 = new Kostengruppe470();
         KGR480490 = new Kostengruppe480490();
-        AlleKostengruppen = new IKostengruppe[8];
-        SetAlleKostenGruppen();
+        AlleKostengruppen = new IKostengruppe[1]; // nur damit der compiler nicht nervt
+        SetAlleKostengruppen();
     }
 
-    private void SetAlleKostenGruppen()
+    private void SetAlleKostengruppen()
     {
         AlleKostengruppen = new IKostengruppe[8];
         AlleKostengruppen[0] = KGR410;
@@ -56,6 +57,8 @@ internal class Projekt
         AlleKostengruppen[6] = KGR470;
         AlleKostengruppen[7] = KGR480490;
     }
+
+    
     [JsonInclude]
     public string Projektname = "Beispielname";
 

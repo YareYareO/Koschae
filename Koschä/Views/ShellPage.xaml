@@ -96,13 +96,10 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 
-                <NavigationViewItem x:Uid="Shell_Load">
-                    <Button Name="LoadButtonNav" Content="Lade ein Projekt"  Click="LoadButton_Click"/>
-                </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Save">
                     <Button Name="SaveButton" Content="Speicher Alles"  Click="SaveButton_Click"/>
                 </NavigationViewItem>
-                    
+
 
 
             </NavigationView.MenuItems>

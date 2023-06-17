@@ -17,10 +17,12 @@ public sealed partial class KGR410Page : Page
     {
         ViewModel = App.GetService<KGR410ViewModel>();
         InitializeComponent();
+        
     }
 
     private void Button_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         ViewModel.kgr.Tab2AddSystem();
     }
+
 }
