@@ -56,4 +56,5 @@ public partial class SystemTeil: ObservableObject, ISystem
         anzahl = a;
         preis = p;
     }
+
 }

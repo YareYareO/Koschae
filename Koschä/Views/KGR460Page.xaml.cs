@@ -1,4 +1,5 @@
-﻿using Koschä.ViewModels;
+﻿using System.Diagnostics;
+using Koschä.ViewModels;
 
 using Microsoft.UI.Xaml.Controls;
 
@@ -20,5 +21,6 @@ public sealed partial class KGR460Page : Page
     private void Button_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         ViewModel.kgr.AddAufzug();
+        Debug.WriteLine(ViewModel.kgr.Tabelle[0].TotalPreis);
     }
 }

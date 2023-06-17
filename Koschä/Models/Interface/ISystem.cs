@@ -23,8 +23,4 @@ public interface ISystem: IElement
         set;
     }
     public int TotalPreis => Anzahl * Preis;
-    public int GetTotalPreis()
-    {
-    
-    return TotalPreis; }
 }

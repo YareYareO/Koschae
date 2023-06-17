@@ -15,7 +15,7 @@ public partial class DoppelSystem: SystemTeil
     private int zweiterWert;
 
 
-    public new int TotalPreis => Anzahl * Preis * zweiterWert;
+    public new int TotalPreis => Anzahl * Preis * ZweiterWert;
 
     public DoppelSystem(string n, int p)
     {

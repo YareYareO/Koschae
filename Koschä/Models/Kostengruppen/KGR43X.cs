@@ -67,7 +67,7 @@ public class Kostengruppe43X: IKostengruppe
         int gesamtkosten = 0;
         gesamtkosten += SystemGet<RLTSystem>.SummeGesamtKosten(Tabelle2);
         gesamtkosten += SystemGet<RLTSystem>.SummeGesamtKosten(Tabelle4);
-        gesamtkosten += SystemGet<DoppelDoubleSystem>.SummeGesamtKosten(Tabelle5);
+        gesamtkosten += SystemGet<DoppelDoubleSystem>.SummeGesamtKostenDoppelDoubleSystem(Tabelle5);
         return gesamtkosten;
     }
 

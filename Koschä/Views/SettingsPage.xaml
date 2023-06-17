@@ -63,8 +63,8 @@
                 <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" Margin="{StaticResource SettingsPageHyperlinkButtonMargin}" />
             </StackPanel>
             <StackPanel>
-                <TextBox Name="ProjektName" Text="{x:Bind projektReferenz.Projektname}" TextChanged="ProjektName_TextChanged"/>
-                <Button Name="LadeButton" Content="Lade Projekt"  Click="LadeButton_Click"/>
+                <TextBox Name="ProjektName" Text="{x:Bind projektReferenz.Projektname}" TextChanged="ProjektName_TextChanged" Width="300" HorizontalAlignment="Left" Margin="10 20 0 0"/>
+                <Button Name="LadeButton" Content="Lade Projekt"  Click="LadeButton_Click" Margin="10 20 0 0"/>
             </StackPanel>
             </StackPanel>
         

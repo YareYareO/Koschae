@@ -38,7 +38,7 @@ public class Kostengruppe470: IKostengruppe
         int gesamtkosten = 0;
         gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle1);
         gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle2);
-        gesamtkosten += SystemGet<DoppelSystem>.SummeGesamtKosten(Tabelle3);
+        gesamtkosten += SystemGet<DoppelSystem>.SummeGesamtKostenDoppelSystem(Tabelle3);
         return gesamtkosten;
     }
 

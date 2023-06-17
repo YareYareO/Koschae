@@ -26,7 +26,7 @@ public class Kostengruppe460: IKostengruppe
     public int GetAlleTabellenkosten()
     {
         int gesamtkosten = 0;
-        gesamtkosten += SystemGet<DoppelSystem>.SummeGesamtKosten(Tabelle);
+        gesamtkosten += SystemGet<DoppelSystem>.SummeGesamtKostenDoppelSystem(Tabelle);
         return gesamtkosten;
     }
 

@@ -94,8 +94,8 @@ public class _43XHelper
 
         DoppelDoubleSystem doppelsystem = new DoppelDoubleSystem("Statische Kälte", a: GetSummeStatKälte(), p: 650, z: 0.8);
         DoppelDoubleSystem doppelsystem2 = new DoppelDoubleSystem("Dynamische Kälte", a: GetSummeDynKälte(), p: 100, z: 0.8);
-        DoppelDoubleSystem doppelsystem3 = new DoppelDoubleSystem("Grundlastkälte Turbocor", a: GetSummeStatKälte() + GetSummeStatKälte(), p: 175, z: 0.8);
-        DoppelDoubleSystem doppelsystem4 = new DoppelDoubleSystem("Dynamische Kälte", a: (int)((GetSummeStatKälte() + GetSummeStatKälte())*(1+1/3.1)), p: 150, z: 0.8);
+        DoppelDoubleSystem doppelsystem3 = new DoppelDoubleSystem("Grundlastkälte Turbocor", a: GetSummeStatKälte() + GetSummeDynKälte(), p: 175, z: 0.8);
+        DoppelDoubleSystem doppelsystem4 = new DoppelDoubleSystem("Dynamische Kälte", a: (int)((GetSummeStatKälte() + GetSummeDynKälte())*(1+1/3.1)), p: 150, z: 0.8);
 
         tabelle.Add(doppelsystem);
         tabelle.Add(doppelsystem2);
