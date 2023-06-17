@@ -7,8 +7,12 @@
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea">
+    <Grid x:Name="ContentArea"
+          Margin="20 50 20 50"
+          Width="Auto"
+          HorizontalAlignment="Left">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -17,7 +21,8 @@
             AutoGenerateColumns="False"
             GridLinesVisibility="Horizontal"
             ItemsSource="{x:Bind ViewModel.kgr.Tabelle, Mode=OneWay}"
-            Grid.Row="0">
+            Grid.Row="1"
+            Margin="20 10 0 0">
             <controls:DataGrid.Resources>
                 <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
             </controls:DataGrid.Resources>
@@ -25,14 +30,11 @@
                 <controls:DataGridTextColumn Binding="{Binding Name}" Header="Aufzüge" />
                 <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Anzahl" />
                 <controls:DataGridTextColumn Binding="{Binding ZweiterWert}" Header="Haltestellen" />
-                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Euro pro Halt" />
-                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" />
+                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro Halt" />
+                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten" />
 
             </controls:DataGrid.Columns>
         </controls:DataGrid>
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1">
-            <Button Click="Button_Click" Content="Neue Zeile"/>
-            <TextBlock Name="Total" Margin="5" Text="AAAAAAAAAA"/>
-        </StackPanel>
+        <Button Click="Button_Click" Content="Neuer Aufzug" Grid.Row="2" Margin="20 10 0 0"/>
     </Grid>
 </Page>

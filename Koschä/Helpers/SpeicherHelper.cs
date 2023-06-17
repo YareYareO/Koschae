@@ -21,16 +21,16 @@ class SpeicherHelper
     private static readonly string preispath = path + "/Preise/";
     public static void SpeicherDaten()
     {
-        var alleKGRs = Projekt.GetInstance();
+        var projekt = Projekt.GetInstance();
         
         if (!Directory.Exists(projectpath))
         {
             _ = Directory.CreateDirectory(projectpath);
         }
 
-        var filepath = projectpath + alleKGRs.Projektname + ".json";
+        var filepath = projectpath + projekt.Projektname + ".json";
         var options = new JsonSerializerOptions { WriteIndented = true };
-        var jsonString = JsonSerializer.Serialize(alleKGRs, options);
+        var jsonString = JsonSerializer.Serialize(projekt, options);
 
         Debug.WriteLine(jsonString);
         File.WriteAllText(filepath, jsonString);

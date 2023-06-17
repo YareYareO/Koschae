@@ -9,23 +9,28 @@ using Koschä.Helpers;
 using Koschä.Models.Elemente;
 using Koschä.Models.Interface;
 using System.Diagnostics;
+using System.Text.Json.Serialization;
 
 namespace Koschä.Models.Kostengruppen;
 
 public class Kostengruppe420: IKostengruppe
 {
+    [JsonInclude]
     public ObservableCollection<AdaptivSystem> Tabelle1
     {
         get; set;
     }
+    [JsonInclude]
     public ObservableCollection<AdaptivSystem> Tabelle2
     {
         get; set;
     }
+    [JsonInclude]
     public ObservableCollection<SystemTeil> Tabelle3
     {
         get; set;
     }
+    [JsonInclude]
     public ObservableCollection<SystemTeil> Tabelle4
     {
         get; set;

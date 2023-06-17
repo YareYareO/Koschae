@@ -12,6 +12,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -23,37 +25,40 @@
                 GridLinesVisibility="Horizontal"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
                 Grid.Column="0"
-                Grid.Row="0">
+                Grid.Row="1"
+                Margin="20 10 0 0">
             <controls:DataGrid.Resources>
                 <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
             </controls:DataGrid.Resources>
 
             <controls:DataGrid.Columns>
-                <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
-                <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Prozentwert" />
-                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Investkosten" />
-                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt"/>
+                <controls:DataGridTextColumn Binding="{Binding Name}" Header="Gewerk" />
+                <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="In Prozent" />
+                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Absolute Kosten" />
+                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="MSR-Technik"/>
             </controls:DataGrid.Columns>
         </controls:DataGrid>
 
+        <TextBlock Text="Sonstige Maßnahmen" FontSize="20" Grid.Column="0" Grid.Row="2" Margin="20 30 0 0"/>
         <controls:DataGrid 
                 AutoGenerateColumns="False"
                 GridLinesVisibility="Horizontal"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
                 Grid.Column="0"
-                Grid.Row="1">
+                Grid.Row="3"
+                Margin="20 10 0 0">
             <controls:DataGrid.Resources>
                 <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
             </controls:DataGrid.Resources>
 
             <controls:DataGrid.Columns>
-                <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
-                <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Fläche in m^2" />
-                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro m^2" />
-                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt"/>
+                <controls:DataGridTextColumn Binding="{Binding Name}" Header="Maßnahmen" />
+                <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Anzahl" />
+                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro Einheit" />
+                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten"/>
             </controls:DataGrid.Columns>
         </controls:DataGrid>
-        <Button Name="Tabelle1KGR410Button" Content="Hi" Grid.Row="2" Grid.Column="0" Click="Tabelle1KGR410Button_Click"/>
+        <Button Name="Tabelle1KGR410Button" Content="Neues System" Grid.Row="4" Click="Tabelle1KGR410Button_Click" Margin="20 10 0 0"/>
 
     </Grid>
 </Page>

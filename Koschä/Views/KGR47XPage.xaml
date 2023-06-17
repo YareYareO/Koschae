@@ -7,8 +7,16 @@
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea">
+    <Grid x:Name="ContentArea"
+          Margin="20 50 20 50"
+          HorizontalAlignment="Left">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -18,66 +26,69 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
+        <TextBlock Text="Sprinklerköpte" FontSize="20" Grid.Column="0" Grid.Row="1" Margin="20 0 0 0"/>
         <controls:DataGrid
             AutoGenerateColumns="False"
             GridLinesVisibility="Horizontal"
             ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
-            Grid.Row="0"
-            Grid.Column="0">
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="20 10 0 0">
             <controls:DataGrid.Resources>
                 <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
             </controls:DataGrid.Resources>
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
                 <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Sprinklerköpfe"/>
-                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Euro pro Einheit" />
-                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" />
+                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro Einheit" />
+                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten" />
 
             </controls:DataGrid.Columns>
         </controls:DataGrid>
 
-
+        <TextBlock Text="Feuerlöschanlagen" FontSize="20" Grid.Column="0" Grid.Row="3" Margin="20 30 0 0"/>
         <controls:DataGrid
             AutoGenerateColumns="False"
             GridLinesVisibility="Horizontal"
             ItemsSource="{x:Bind ViewModel.kgr.Tabelle3, Mode=OneWay}"
-            Grid.Row="1"
-            Grid.Column="0">
+            Grid.Row="4"
+            Grid.Column="0"
+            Margin="20 10 0 0">
             <controls:DataGrid.Resources>
                 <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
             </controls:DataGrid.Resources>
             <controls:DataGrid.Columns>
-                <controls:DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+                <controls:DataGridTextColumn Binding="{Binding Name}" Header="Anlage" />
                 <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Anzahl" />
                 <controls:DataGridTextColumn Binding="{Binding ZweiterWert}" Header="Geschosse" />
-                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Euro pro Halt" />
-                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" />
+                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro Einheit" />
+                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten" />
 
             </controls:DataGrid.Columns>
         </controls:DataGrid>
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-            <Button Name="ButtonTab3" Click="ButtonTab3_Click" Content="Neue Zeile"/>
-        </StackPanel>
 
+        <Button Name="ButtonTab3" Click="ButtonTab3_Click" Content="Neue Zeile" Grid.Row="5" Margin="20 10 0 0"/>
+
+        <TextBlock Text="Sonstige Nutzerspezifische Anlagen" FontSize="20" Grid.Column="0" Grid.Row="6" Margin="20 30 0 0"/>
         <controls:DataGrid
             AutoGenerateColumns="False"
             GridLinesVisibility="Horizontal"
             ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
-            Grid.Row="2"
-            Grid.Column="0">
+            Grid.Row="7"
+            Grid.Column="0"
+            Margin="20 10 0 0">
             <controls:DataGrid.Resources>
                 <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
             </controls:DataGrid.Resources>
             <controls:DataGrid.Columns>
-                <controls:DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+                <controls:DataGridTextColumn Binding="{Binding Name}" Header="Anlage" />
                 <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Anzahl" />
-                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Euro pro Anzahl" />
-                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt" />
+                <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro Einheit" />
+                <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten" />
 
             </controls:DataGrid.Columns>
         </controls:DataGrid>
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-            <Button Name="ButtonTab1" Click="ButtonTab1_Click" Content="Neue Zeile" />
-        </StackPanel>
+
+        <Button Name="ButtonTab1" Click="ButtonTab1_Click" Content="Neue Zeile" Grid.Row="8" Margin="20 10 0 0"/>
     </Grid>
 </Page>

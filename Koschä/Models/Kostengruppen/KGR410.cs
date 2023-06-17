@@ -10,13 +10,14 @@ using Koschä.Models.Elemente;
 using Koschä.Models.Interface;
 using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace Koschä.Models.Kostengruppen;
 public partial class Kostengruppe410 : IKostengruppe
 {
-
+    [JsonInclude]
     public ObservableCollection<SystemTeil> Tabelle1;
-
+    [JsonInclude]
     public ObservableCollection<SystemTeil> Tabelle2;
 
     public Kostengruppe410() 

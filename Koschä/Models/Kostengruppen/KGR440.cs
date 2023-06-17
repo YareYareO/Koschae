@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Koschä.Helpers;
 using Koschä.Helpers.KGRHelper;
@@ -11,8 +12,9 @@ using Koschä.Models.Elemente;
 namespace Koschä.Models.Kostengruppen;
 public class Kostengruppe440: IKostengruppe
 {
+    [JsonInclude]
     public ObservableCollection<SystemTeil> Tabelle1;
-
+    [JsonInclude]
     public ObservableCollection<SystemTeil> Tabelle2;
 
     public Kostengruppe440()

@@ -22,9 +22,4 @@ public sealed partial class BereichePage : Page
     {
         ViewModel.FügNeuenBereichHinzu();
     }
-
-    private void DataGrid_CellEditEnded(object sender, CommunityToolkit.WinUI.UI.Controls.DataGridCellEditEndedEventArgs e)
-    {
-       // ViewModel.SpeichereTabelle();
-    }
 }

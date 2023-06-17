@@ -7,59 +7,72 @@
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
 
-    <ScrollViewer>
+    <ScrollViewer >
         <Grid x:Name="ContentArea"
               Width="Auto"
-              HorizontalAlignment="Left">
+              HorizontalAlignment="Left"
+              Margin="20 50 20 50">
+            
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-
+            <TextBlock Text="Wasser + Abwasser" FontSize="20" Grid.Column="0" Grid.Row="1" Margin="20 0 0 0"/>
             <controls:DataGrid 
                 AutoGenerateColumns="False"
                 GridLinesVisibility="Horizontal"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
                 Grid.Column="0"
-                Grid.Row="0">
+                Grid.Row="2"
+                Margin="20 10 0 0"
+                CornerRadius="25"
+                BorderThickness="1"
+                HorizontalAlignment="Left"
+                >
                 <controls:DataGrid.Resources>
                     <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
                 </controls:DataGrid.Resources>
 
-                <controls:DataGrid.Columns>
+                <controls:DataGrid.Columns >
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Fläche in m^2" />
-                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro m^2" />
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" />
+                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro m^2" />
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten"/>
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
+            <TextBlock Text="Zusatzsysteme" FontSize="20" Grid.Column="0" Grid.Row="3" Margin="20 30 0 0"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
-                GridLinesVisibility="Horizontal"
+                GridLinesVisibility="All"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
-                Grid.Column="1"
-                Grid.Row="0">
+                Grid.Column="0"
+                Grid.Row="4"
+                Margin="20 10 0 0"
+                CornerRadius="25"
+                BorderThickness="1">
                 <controls:DataGrid.Resources>
                     <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
                 </controls:DataGrid.Resources>
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="System" />
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Anzahl" />
-                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="€ pro Stück" />
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Gesamt"/>
+                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro Einheit" />
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten"/>
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Content="Neues System" Click="Button_Click" Grid.Row="1" Grid.Column="1"/>
+            <Button Content="Neues System" Click="Button_Click" Grid.Row="5" Grid.Column="0" Margin="20 10 0 0"/>
 
         </Grid>
 

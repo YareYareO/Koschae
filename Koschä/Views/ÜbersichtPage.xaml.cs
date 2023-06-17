@@ -17,4 +17,9 @@ public sealed partial class ÜbersichtPage : Page
         ViewModel = App.GetService<ÜbersichtViewModel>();
         InitializeComponent();
     }
+
+    private void DataGrid_CellEditEnded(object sender, CommunityToolkit.WinUI.UI.Controls.DataGridCellEditEndedEventArgs e)
+    {
+        ViewModel.SetGesamtkosten();
+    }
 }

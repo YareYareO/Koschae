@@ -8,23 +8,27 @@
     mc:Ignorable="d">
 
 
-    <Grid x:Name="ContentArea">
+    <Grid x:Name="ContentArea"
+          Width="Auto"
+          HorizontalAlignment="Left"
+          Margin="20 50 20 50">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        
         <controls:DataGrid
             Grid.Row="0"
             AutoGenerateColumns="False"
             GridLinesVisibility="Horizontal"
-            ItemsSource="{x:Bind ViewModel.Source, Mode=OneWay}"
-            CellEditEnded="DataGrid_CellEditEnded">
+            ItemsSource="{x:Bind ViewModel.Source, Mode=OneWay}">
             <controls:DataGrid.Resources>
                 <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
             </controls:DataGrid.Resources>
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Binding="{Binding Name}" Header="Name" />
-                <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Grösse" />
+                <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Größe in m^2" />
 
             </controls:DataGrid.Columns>
         </controls:DataGrid>

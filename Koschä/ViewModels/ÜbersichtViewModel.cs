@@ -13,12 +13,17 @@ public class ÜbersichtViewModel : ObservableRecipient
     {
         KostenAllerGruppen = new ObservableCollection<TabellenElement>();
         fülleTabelle();
+        SetGesamtkosten();
     }
 
     public ObservableCollection<TabellenElement> KostenAllerGruppen;
 
     private readonly string[] kgrnamen = { "KGR 410", "KGR 420", "KGR 43X", "KGR 440", "KGR 450", "KGR 460", "KGR 470", "KGR 480" };
 
+    public int Gesamtkosten
+    {
+        get; private set;
+    }
     private void fülleTabelle()
     {
         int[] kosten = GetAlleEinzelKosten(Projekt.GetInstance().AlleKostengruppen);
@@ -37,6 +42,16 @@ public class ÜbersichtViewModel : ObservableRecipient
             kosten[i] = kgrs[i].GetAlleTabellenkosten();
         }
         return kosten;
+    }
+
+    public void SetGesamtkosten()
+    {
+        int ret = 0;
+        foreach (var kostengruppe in KostenAllerGruppen)
+        {
+            ret += kostengruppe.Anzahl;
+        }
+        Gesamtkosten = ret;
     }
 
 }

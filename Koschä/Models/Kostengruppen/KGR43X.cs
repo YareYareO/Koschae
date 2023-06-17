@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Koschä.Helpers;
 using Koschä.Helpers.KGRHelper;
@@ -13,24 +14,27 @@ using Koschä.Models.Interface;
 namespace Koschä.Models.Kostengruppen;
 public class Kostengruppe43X: IKostengruppe
 {
+    [JsonInclude]
     public ObservableCollection<DoppelSystem> Tabelle1
     {
         get; set;
     }
-
+    [JsonInclude]
     public ObservableCollection<RLTSystem> Tabelle2
     {
         get; set;
     }
-
+    [JsonInclude]
     public ObservableCollection<AktivFlächenSystem> Tabelle3
     {
         get; set;
     }
+    [JsonInclude]
     public ObservableCollection<RLTSystem> Tabelle4
     {
         get; set;
     }
+    [JsonInclude]
     public ObservableCollection<DoppelDoubleSystem> Tabelle5
     {
         get; set;

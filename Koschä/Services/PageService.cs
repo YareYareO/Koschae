@@ -24,7 +24,6 @@ public class PageService : IPageService
         Configure<KGR460ViewModel, KGR460Page>();
         Configure<KGR47XViewModel, KGR47XPage>();
         Configure<KGR480490ViewModel, KGR480490Page>();
-        Configure<KGR200500ViewModel, KGR200500Page>();
         Configure<SettingsViewModel, SettingsPage>();
     }
 

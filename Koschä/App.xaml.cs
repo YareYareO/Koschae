@@ -70,8 +70,6 @@ public partial class App : Application
             // Views and ViewModels
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<SettingsPage>();
-            services.AddTransient<KGR200500ViewModel>();
-            services.AddTransient<KGR200500Page>();
             services.AddTransient<KGR480490ViewModel>();
             services.AddTransient<KGR480490Page>();
             services.AddTransient<KGR47XViewModel>();

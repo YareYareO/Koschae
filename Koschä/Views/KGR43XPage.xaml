@@ -8,8 +8,17 @@
     mc:Ignorable="d">
 
     <ScrollViewer>
-        <Grid x:Name="ContentArea">
+        <Grid x:Name="ContentArea"
+              Margin="20 50 20 50"
+              HorizontalAlignment="Left">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -18,109 +27,115 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-
+            <TextBlock Text="Spezifirche RLT-Anlagen und Leistungen" FontSize="20" Grid.Column="0" Grid.Row="1" Margin="20 0 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="Horizontal"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
                     Grid.Column="0"
-                    Grid.Row="0"
-                    CellEditEnded="DataGrid_CellEditEnded">
+                    Grid.Row="2"
+                    CellEditEnded="DataGrid_CellEditEnded"
+                    Margin="20 10 0 0">
                 <controls:DataGrid.Resources>
                     <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
                 </controls:DataGrid.Resources>
 
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Fläche in m^2" />
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" />
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Raumhöhe in m" />
                     <controls:DataGridTextColumn Binding="{Binding ZweiterWert}" Header="Luftwechsel" />
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Luftleistung in m^2/h"/>
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Luftleistung in m^3/h"/>
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
+            <TextBlock Text="RLT-Anlage ZU und ABL" FontSize="20" Grid.Column="0" Grid.Row="3" Margin="20 30 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="Horizontal"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
                     Grid.Column="0"
-                    Grid.Row="1"
-                    CellEditEnded="DataGrid_CellEditEnded">
+                    Grid.Row="4"
+                    CellEditEnded="DataGrid_CellEditEnded"
+                    Margin="20 10 0 0">
                 <controls:DataGrid.Resources>
                     <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
                 </controls:DataGrid.Resources>
 
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Luftmenge" />
-                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis" />
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="TotalPreis"/>
-                    <controls:DataGridTextColumn Binding="{Binding Wrg}" Header="WRG" />
-                    <controls:DataGridTextColumn Binding="{Binding DynamischeHeizung}" Header="dyn Heizung" />
-                    <controls:DataGridTextColumn Binding="{Binding Krg}" Header="KRG" />
-                    <controls:DataGridTextColumn Binding="{Binding DynamischeKälte}" Header="dyn Kälte" />
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Luftmenge in m^3/h" />
+                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in €/m^3/h" />
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten"/>
+                    <controls:DataGridTextColumn Binding="{Binding Wrg}" Header="WRG in kW" />
+                    <controls:DataGridTextColumn Binding="{Binding DynamischeHeizung}" Header="dynamische Heizung in kW" />
+                    <controls:DataGridTextColumn Binding="{Binding Krg}" Header="KRG i kW" />
+                    <controls:DataGridTextColumn Binding="{Binding DynamischeKälte}" Header="dynamische Kälte in kW" />
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
+            <TextBlock Text="Statische Kälte" FontSize="20" Grid.Column="0" Grid.Row="5" Margin="20 30 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="Horizontal"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle3, Mode=OneWay}"
                     Grid.Column="0"
-                    Grid.Row="2"
-                    CellEditEnded="DataGrid_CellEditEnded">
+                    Grid.Row="6"
+                    CellEditEnded="DataGrid_CellEditEnded"
+                    Margin="20 10 0 0">
                 <controls:DataGrid.Resources>
                     <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
                 </controls:DataGrid.Resources>
 
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Fläche" />
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" />
                     <controls:DataGridTextColumn Binding="{Binding Belegungsfaktor}" Header="Belegungsfaktor" />
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="aktive Fläche"/>
-                    <controls:DataGridTextColumn Binding="{Binding SystemSpezifikation}" Header="Systemspezif." />
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="aktive Fläche in m^2"/>
+                    <controls:DataGridTextColumn Binding="{Binding Systemname}" Header="Systemname" />
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="spezielle Kälteleistung" />
-                    <controls:DataGridTextColumn Binding="{Binding LeistungGesamt}" Header="Kälteleistung kW" />
+                    <controls:DataGridTextColumn Binding="{Binding LeistungGesamt}" Header="Kälteleistung in kW" />
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
+            <TextBlock Text="Sonderkälte" FontSize="20" Grid.Column="0" Grid.Row="7" Margin="20 30 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="Horizontal"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle4, Mode=OneWay}"
                     Grid.Column="0"
-                    Grid.Row="3"
-                    CellEditEnded="DataGrid_CellEditEnded">
+                    Grid.Row="8"
+                    CellEditEnded="DataGrid_CellEditEnded"
+                    Margin="20 10 0 0">
                 <controls:DataGrid.Resources>
                     <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
                 </controls:DataGrid.Resources>
 
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Kühlstg spez in KW" />
-                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Räume" />
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="dyn Kälte" />
-                    <controls:DataGridTextColumn Binding="{Binding DynamischeKälte}" Header="TotalPreis" IsReadOnly="False"/>
-                    
-
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Kühlstg. spez. in kW" />
+                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Räume/Einheiten" />
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="dynamische Kälte" />
+                    <controls:DataGridTextColumn Binding="{Binding DynamischeKälte}" Header="Investitionskosten" IsReadOnly="False"/>
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Grid.Column="1" Grid.Row="3" Name="AddButton" Content="Button" Click="AddButton_Click"/>
+            <Button Grid.Column="0" Grid.Row="9" Name="AddButton" Content="Button" Click="AddButton_Click" Margin="20 10 0 0"/>
 
+            <TextBlock Text="Kältetechnische Anlagen" FontSize="20" Grid.Column="0" Grid.Row="10" Margin="20 30 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="Horizontal"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle5, Mode=OneWay}"
                     Grid.Column="0"
-                    Grid.Row="4"
-                    CellEditEnded="DataGrid_CellEditEnded">
+                    Grid.Row="11"
+                    CellEditEnded="DataGrid_CellEditEnded"
+                    Margin="20 10 0 0">
                 <controls:DataGrid.Resources>
                     <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
                 </controls:DataGrid.Resources>
@@ -129,8 +144,8 @@
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Anlage" />
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Leistung" />
                     <controls:DataGridTextColumn Binding="{Binding ZweiterWert}" Header="GL Faktor" />
-                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis pro W" />
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investkosten"/>
+                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro kW" />
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten"/>
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
