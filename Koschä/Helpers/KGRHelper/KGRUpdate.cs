@@ -44,11 +44,22 @@ internal class KGRUpdate<T> where T : SystemTeil, new()
             }
             else if (tabelle.Any(system => (system.Name == bereich.Name))) //updated die Fläche jeder Zeile
             {
+                List<T> leerezeilen = new List<T>();
+
                 foreach (T zeile in tabelle)
                 {
-                    if (zeile.Name == bereich.Name) zeile.Anzahl = bereich.Anzahl;
+                    if (zeile.Name == bereich.Name)
+                    {
+                        zeile.Anzahl = bereich.Anzahl;
+
+                        if (bereich.Anzahl == 0) leerezeilen.Add(zeile);
+                    }
                 }
-                
+                foreach (var leerzeile in leerezeilen)
+                {
+                    tabelle.Remove(leerzeile);
+                }
+
             }
         }
         return tabelle;
