@@ -28,7 +28,7 @@ public partial class AdaptivSystem: SystemTeil, IAdaptivSystem
     [NotifyPropertyChangedFor(nameof(TotalPreis))]
     private int preisProkW;
 
-    public int LeistungGesamt => (int) Math.Ceiling( (double) (WattproM * anzahl / 1000));
+    public int LeistungGesamt => (int) Math.Ceiling( (double) (WattproM) * (double) (anzahl) / 1000.0);
 
     public new int TotalPreis => WirdMitMeterBerechnet() ? (anzahl * Preis) : (LeistungGesamt * preisProkW);
 
