@@ -7,33 +7,36 @@
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
 
-
-    <Grid x:Name="ContentArea"
+    <ScrollViewer>
+        <Grid x:Name="ContentArea"
           Width="Auto"
           HorizontalAlignment="Left"
           Margin="20 50 20 50">
         
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        
-        <controls:DataGrid
-            Grid.Row="0"
-            AutoGenerateColumns="False"
-            GridLinesVisibility="Horizontal"
-            ItemsSource="{x:Bind ViewModel.Source, Mode=OneWay}">
-            <controls:DataGrid.Resources>
-                <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
-            </controls:DataGrid.Resources>
-            <controls:DataGrid.Columns>
-                <controls:DataGridTextColumn Binding="{Binding Name}" Header="Name" />
-                <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Größe in m^2" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-            </controls:DataGrid.Columns>
-        </controls:DataGrid>
+            <controls:DataGrid
+                Grid.Row="0"
+                AutoGenerateColumns="False"
+                GridLinesVisibility="All"
+                Background="#f8f8f8"
+                AlternatingRowBackground="#e6e6e6"
+                BorderThickness="1"
+                BorderBrush="#e6e6e6"
+                ItemsSource="{x:Bind ViewModel.Source, Mode=OneWay}">
+            
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Name"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Größe in m^2" />
 
-        <Button Content="Hi" Grid.Row="1" Click="Button_Click"/>
-    </Grid>
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+
+            <Button Content="Neuer Bereich" Grid.Row="1" Click="Button_Click" Margin="10 10 0 0" />
+        </Grid>
+    </ScrollViewer>
 
 </Page>

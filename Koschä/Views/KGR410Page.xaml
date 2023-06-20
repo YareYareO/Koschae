@@ -7,7 +7,7 @@
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
 
-    <ScrollViewer >
+    <ScrollViewer>
         <Grid x:Name="ContentArea"
               Width="Auto"
               HorizontalAlignment="Left"
@@ -28,19 +28,17 @@
             <TextBlock Text="Wasser + Abwasser" FontSize="20" Grid.Column="0" Grid.Row="1" Margin="20 0 0 0"/>
             <controls:DataGrid 
                 AutoGenerateColumns="False"
-                GridLinesVisibility="Horizontal"
+                GridLinesVisibility="All"
+                Background="#f8f8f8"
+                AlternatingRowBackground="#e6e6e6"
+                BorderThickness="1"
+                BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
                 Grid.Column="0"
                 Grid.Row="2"
                 Margin="20 10 0 0"
-                CornerRadius="25"
-                BorderThickness="1"
-                HorizontalAlignment="Left"
-                >
-                <controls:DataGrid.Resources>
-                    <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
-                </controls:DataGrid.Resources>
-
+                HorizontalAlignment="Left">
+                
                 <controls:DataGrid.Columns >
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" />
@@ -54,15 +52,15 @@
             <controls:DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="All"
+                Background="#f8f8f8"
+                AlternatingRowBackground="#e6e6e6"
+                BorderThickness="1"
+                BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
                 Grid.Column="0"
                 Grid.Row="4"
-                Margin="20 10 0 0"
-                CornerRadius="25"
-                BorderThickness="1">
-                <controls:DataGrid.Resources>
-                    <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
-                </controls:DataGrid.Resources>
+                Margin="20 10 0 0">
+                
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="System" />
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Anzahl" />
@@ -72,7 +70,7 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Content="Neues System" Click="Button_Click" Grid.Row="5" Grid.Column="0" Margin="20 10 0 0"/>
+            <Button Content="Neues System" Click="Button_Click" Grid.Row="5" Grid.Column="0" Margin="30 10 0 0"/>
 
         </Grid>
 

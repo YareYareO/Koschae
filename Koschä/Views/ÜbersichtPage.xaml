@@ -20,22 +20,22 @@
         <TextBlock Text="Gesammelte Kosten aller Kostengruppen" FontSize="30" Grid.Row="0" />
         <controls:DataGrid
             AutoGenerateColumns="False"
-            GridLinesVisibility="Horizontal"
+            GridLinesVisibility="All"
+            Background="#f8f8f8"
+            AlternatingRowBackground="#e6e6e6"
+            BorderThickness="1"
+            BorderBrush="#e6e6e6"
             ItemsSource="{x:Bind ViewModel.KostenAllerGruppen, Mode=OneWay}"
             Grid.Row="1"
             Margin="20 10 0 0"
             CellEditEnded="DataGrid_CellEditEnded">
-
-            <controls:DataGrid.Resources>
-                <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundColor" Color="Transparent" />
-            </controls:DataGrid.Resources>
 
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Binding="{Binding Name}" Header="Kostengruppe" />
                 <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Preis" />
             </controls:DataGrid.Columns>
         </controls:DataGrid>
-        <StackPanel HorizontalAlignment="Left" FlowDirection="LeftToRight" Grid.Row="2" Margin="20 10 0 0">
+        <StackPanel HorizontalAlignment="Left" FlowDirection="LeftToRight" Grid.Row="2" Margin="50 10 0 0">
             <TextBlock Text="Gesamtkosten: " FontSize="25"/>
             <TextBlock Text="{x:Bind ViewModel.Gesamtkosten}" FontSize="25"  />
         </StackPanel>
