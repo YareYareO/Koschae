@@ -74,7 +74,7 @@
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten"/>
                     <controls:DataGridTextColumn Binding="{Binding Wrg}" Header="WRG in kW" />
                     <controls:DataGridTextColumn Binding="{Binding DynamischeHeizung}" Header="dynamische Heizung in kW" />
-                    <controls:DataGridTextColumn Binding="{Binding Krg}" Header="KRG i kW" />
+                    <controls:DataGridTextColumn Binding="{Binding Krg}" Header="KRG in kW"/>
                     <controls:DataGridTextColumn Binding="{Binding DynamischeKälte}" Header="dynamische Kälte in kW" />
 
                 </controls:DataGrid.Columns>

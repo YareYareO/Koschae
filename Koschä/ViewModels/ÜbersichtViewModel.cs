@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Koschä.Models;
 using Koschä.Models.Elemente;
@@ -20,7 +21,7 @@ public class ÜbersichtViewModel : ObservableRecipient
                                             "Starkstrom", "FM-Infotechnik", "Förderanlagen",
                                             "Spezifische Anlagen", "GLT/MSR und Sonstiges" };
 
-    public int Gesamtkosten
+    public string Gesamtkosten
     {
         get; private set;
     }
@@ -51,7 +52,9 @@ public class ÜbersichtViewModel : ObservableRecipient
         {
             ret += kostengruppe.Anzahl;
         }
-        Gesamtkosten = ret;
+
+        string retstring = ret.ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        Gesamtkosten = retstring;
     }
 
 }

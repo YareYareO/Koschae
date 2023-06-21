@@ -16,7 +16,7 @@ public partial class AktivFlächenSystem: AdaptivSystem
     private double belegungsfaktor;
 
     public new int TotalPreis => (int) (Anzahl * belegungsfaktor); // totalpreis == aktive Fläche
-    public new int LeistungGesamt => (int) (preis * Anzahl * belegungsfaktor) / 1000; //Kälteleistung in kW
+    public new int LeistungGesamt => (int) Math.Ceiling(((double) preis * (double)Anzahl * belegungsfaktor) / 1000.0); //Kälteleistung in kW
 
     public AktivFlächenSystem()
     {
