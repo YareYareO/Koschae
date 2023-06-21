@@ -58,7 +58,13 @@
             
             <StackPanel>
                 <TextBox Name="ProjektName" Text="{x:Bind projektReferenz.Projektname}" TextChanged="ProjektName_TextChanged" Width="300" HorizontalAlignment="Left" Margin="10 20 0 0"/>
-                <Button Name="LadeButton" Content="Lade Projekt"  Click="LadeButton_Click" Margin="10 20 0 0"/>
+                <Button Name="LadeButton" Content="Vorhandenes Projekt Laden"  Click="LadeButton_Click" Margin="10 20 0 0"/>
+
+                <TextBlock Margin="0 50 0 0" Text="Hinweise um eine Übersicht zu erstellen" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                <TextBlock Margin="10 20 0 0" IsTextSelectionEnabled="True" MaxWidth="700" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Aktuell gibt es in der App keine Möglichkeit eine Pdf Datei zu erstellen. Um trotzdem eine Übersicht der Gesamtkosten des Projekts zu haben, möchte ich eine Alternative beschreiben, Schritt für Schritt: "/>
+                <TextBlock Margin="10 10 0 0" IsTextSelectionEnabled="True" MaxWidth="700" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Zuerst, wenn die Preise bereit sind, navigiere zur Übersicht-Seite. Drücke gleichzeitig Windows-Taste + Shift + S (bzw. Windows + großes S). Das öffnet ein Clip Tool welches, nachdem ein Bereich ausgewählt wird, einen Screenshot des Bereichs macht. Dieser Screenshot wird unter Bilder/Screenshot/ gespeichert. So hätte man schon ein Bild einer Übersicht."/>
+                <TextBlock Margin="10 10 0 0" IsTextSelectionEnabled="True" MaxWidth="700" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Wenn man zusätzlich ein Kuchendiagram einsetzen möchte, geht das wie folgt. Zuerst muss ein Diagram erst erstellt werden. Dafür gibt es viele Tools, ein gutes ist online auf meta-chart.com/pie. Wenn das Diagram lokal gespeichert ist, öffne das Übersichtsbild mit Paint, installiert auf jeder Windows Machine. Dann öffne das Diagram-Bild in dem normalen Windows Programm um Bilder anzusehen und drück entweder auf den 'Kopieren' Knopf oder einfach CTRL+C um das Bild zu kopieren. Danach kann man in der geöffneten Paint App CTRL+V drücken um das Diagram in die Übersicht einzusetzen und nach Geschmack verschieben und skalieren wie es richtig passt."/>
+                <TextBlock Margin="10 10 0 0" IsTextSelectionEnabled="True" MaxWidth="700" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Wenn es lieber eine Pdf statt eine Bild-Datei sein soll, dann gibt es dafür auch Converter Online. zB. smallpdf.com/jpg-to-pdf "/>
             </StackPanel>
             </StackPanel>
         
