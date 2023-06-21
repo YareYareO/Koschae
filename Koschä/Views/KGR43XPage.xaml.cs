@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using Koschä.ViewModels;
-
+﻿using Koschä.ViewModels;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Koschä.Views;

@@ -17,7 +17,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Gesammelte Kosten aller Kostengruppen" FontSize="30" Grid.Row="0" />
         <controls:DataGrid
             AutoGenerateColumns="False"
             GridLinesVisibility="All"
@@ -26,7 +25,7 @@
             BorderThickness="1"
             BorderBrush="#e6e6e6"
             ItemsSource="{x:Bind ViewModel.KostenAllerGruppen, Mode=OneWay}"
-            Grid.Row="1"
+            Grid.Row="0"
             Margin="20 10 0 0"
             CellEditEnded="DataGrid_CellEditEnded">
 
@@ -35,7 +34,7 @@
                 <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Preis" />
             </controls:DataGrid.Columns>
         </controls:DataGrid>
-        <StackPanel HorizontalAlignment="Left" FlowDirection="LeftToRight" Grid.Row="2" Margin="50 10 0 0">
+        <StackPanel HorizontalAlignment="Left" FlowDirection="LeftToRight" Grid.Row="1" Margin="50 10 0 0">
             <TextBlock Text="Gesamtkosten: " FontSize="25"/>
             <TextBlock Text="{x:Bind ViewModel.Gesamtkosten}" FontSize="25"  />
         </StackPanel>

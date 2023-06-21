@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
-using Koschä.Models.Interface;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Koschä.Models.Elemente;
 public partial class DoppelSystem: SystemTeil

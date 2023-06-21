@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Koschä.Models.Interface;
-using CommunityToolkit.Mvvm;
 
 namespace Koschä.Models.Elemente;
 public partial class SystemTeil: ObservableObject, ISystem

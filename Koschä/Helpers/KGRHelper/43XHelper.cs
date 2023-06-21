@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using Koschä.Models.Elemente;
-using Koschä.Models.Interface;
 using Koschä.Models;
-using System.Diagnostics;
 
 namespace Koschä.Helpers.KGRHelper;
 public class _43XHelper

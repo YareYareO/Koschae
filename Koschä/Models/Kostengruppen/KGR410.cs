@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using Koschä.Helpers.KGRHelper;
 using Koschä.Helpers;
 using Koschä.Models.Elemente;
-using Koschä.Models.Interface;
-using System.Diagnostics;
-using CommunityToolkit.Mvvm.ComponentModel;
 using System.Text.Json.Serialization;
 
 namespace Koschä.Models.Kostengruppen;

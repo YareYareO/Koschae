@@ -1,9 +1,6 @@
-﻿using System.Diagnostics;
-using Koschä.Contracts.Services;
+﻿using Koschä.Contracts.Services;
 using Koschä.Helpers;
-using Koschä.Models;
 using Koschä.ViewModels;
-
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;

@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using Koschä.Helpers.KGRHelper;
-using Koschä.ViewModels;
-
+﻿using Koschä.ViewModels;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Koschä.Views;

@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Koschä.Models;
+﻿using System.Collections.ObjectModel;
 using Koschä.Models.Elemente;
-using Koschä.Models.Interface;
-using Koschä.Models.Kostengruppen;
 
 namespace Koschä.Helpers.KGRHelper;
 internal class SystemGet<S> where S : SystemTeil 

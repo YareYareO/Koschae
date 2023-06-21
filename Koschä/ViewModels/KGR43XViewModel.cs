@@ -1,10 +1,5 @@
-﻿using System.Collections.ObjectModel;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Koschä.Contracts.ViewModels;
-using Koschä.Core.Contracts.Services;
-using Koschä.Core.Models;
 using Koschä.Models.Kostengruppen;
 using Koschä.Models;
 

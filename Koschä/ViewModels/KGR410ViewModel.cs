@@ -1,14 +1,7 @@
-﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Koschä.Contracts.ViewModels;
-using Koschä.Core.Contracts.Services;
-using Koschä.Core.Models;
 using Koschä.Models;
-using Koschä.Models.Interface;
-using Koschä.Models.Elemente;
 using Koschä.Models.Kostengruppen;
-using Koschä.Helpers.KGRHelper;
 
 namespace Koschä.ViewModels;
 

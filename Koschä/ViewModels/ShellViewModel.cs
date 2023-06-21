@@ -1,8 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-
 using Koschä.Contracts.Services;
 using Koschä.Views;
-
 using Microsoft.UI.Xaml.Navigation;
 
 namespace Koschä.ViewModels;

@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using Koschä.Models;
 using Koschä.Models.Elemente;
-using Koschä.Models.Interface;
-using Windows.ApplicationModel.DataTransfer.DragDrop.Core;
 
 namespace Koschä.Helpers;
 internal class KGRUpdate<T> where T : SystemTeil, new()

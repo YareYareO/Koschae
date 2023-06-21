@@ -1,7 +1,6 @@
 ﻿using Koschä.Helpers;
 using Koschä.Models;
 using Koschä.ViewModels;
-
 using Microsoft.UI.Xaml.Controls;
 
 namespace Koschä.Views;

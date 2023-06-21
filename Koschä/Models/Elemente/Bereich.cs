@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Koschä.Models.Interface;
+﻿using Koschä.Models.Interface;
 
 namespace Koschä.Models.Elemente;
 public class Bereich : IElement

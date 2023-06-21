@@ -1,7 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Koschä.Helpers;
-using Koschä.Helpers.KGRHelper;
 using Koschä.Models;
 using Koschä.Models.Elemente;
 
@@ -18,7 +16,9 @@ public class ÜbersichtViewModel : ObservableRecipient
 
     public ObservableCollection<TabellenElement> KostenAllerGruppen;
 
-    private readonly string[] kgrnamen = { "KGR 410", "KGR 420", "KGR 43X", "KGR 440", "KGR 450", "KGR 460", "KGR 470", "KGR 480" };
+    private readonly string[] kgrnamen = { "Sanitäranlagen", "Heizungstechnik", "Raumlufttechnik",
+                                            "Starkstrom", "FM-Infotechnik", "Förderanlagen",
+                                            "Spezifische Anlagen", "GLT/MSR und Sonstiges" };
 
     public int Gesamtkosten
     {

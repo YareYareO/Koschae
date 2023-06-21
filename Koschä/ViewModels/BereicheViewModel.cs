@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Koschä.Contracts.ViewModels;
-using Koschä.Helpers;
 using Koschä.Models;
 using Koschä.Models.Elemente;
 

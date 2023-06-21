@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using Koschä.Helpers;
 using Koschä.Helpers.KGRHelper;
 using Koschä.Models.Elemente;
-using Koschä.Models.Interface;
 
 namespace Koschä.Models.Kostengruppen;
 public class Kostengruppe43X: IKostengruppe

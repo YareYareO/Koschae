@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
+﻿using System.Text.Json;
 using Koschä.Models;
 using System.Diagnostics;
 using Windows.Storage.Pickers;
 using System.Runtime.InteropServices;
 using WinRT;
-using Windows.ApplicationModel.VoiceCommands;
-using Koschä.Views;
-using Microsoft.UI.Xaml.Controls;
-using Windows.ApplicationModel.Store;
 
 namespace Koschä.Helpers;
 
