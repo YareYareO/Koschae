@@ -85,7 +85,11 @@
             <TextBlock Text="Wärmebereitstellung" FontSize="20" Grid.Column="0" Grid.Row="5" Margin="20 30 0 0"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
-                GridLinesVisibility="Horizontal"
+                GridLinesVisibility="All"
+                Background="#f8f8f8"
+                AlternatingRowBackground="#e6e6e6"
+                BorderThickness="1"
+                BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle3, Mode=OneWay}"
                 Grid.Row="6"
                 Margin="20 10 0 0">
@@ -104,7 +108,11 @@
             <TextBlock Text="Wärmeerzeugung" FontSize="20" Grid.Column="0" Grid.Row="8" Margin="20 30 0 0"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
-                GridLinesVisibility="Horizontal"
+                GridLinesVisibility="All"
+                Background="#f8f8f8"
+                AlternatingRowBackground="#e6e6e6"
+                BorderThickness="1"
+                BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle4, Mode=OneWay}"
                 Grid.Row="9"
                 Margin="20 10 0 0">
