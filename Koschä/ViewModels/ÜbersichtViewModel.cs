@@ -10,6 +10,7 @@ public class ÜbersichtViewModel : ObservableRecipient
 {
     public ÜbersichtViewModel()
     {
+        Gesamtkosten = 0.ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
         KostenAllerGruppen = new ObservableCollection<TabellenElement>();
         fülleTabelle();
         SetGesamtkosten();

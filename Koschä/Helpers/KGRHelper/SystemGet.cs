@@ -14,6 +14,18 @@ internal class SystemGet<S> where S : SystemTeil
         }
         return kosten;
     }
+
+    public static int SummeGesamtKostenRLT(ObservableCollection<RLTSystem> tabelle)
+    {
+        int kosten = 0;
+
+        foreach (var zeile in tabelle)
+        {
+            kosten += zeile.TotalPreis;
+        }
+        return kosten;
+    }
+
     public static int SummeGesamtKostenDoppelSystem(ObservableCollection<DoppelSystem> tabelle) //Existiert weil die generische Methode nicht * zweiterWert macht, nur Anzahl * Preis. Kein Plan warum
     {
         int kosten = 0;
@@ -26,6 +38,17 @@ internal class SystemGet<S> where S : SystemTeil
     }
 
     public static int SummeGesamtKostenDoppelDoubleSystem(ObservableCollection<DoppelDoubleSystem> tabelle) //Existiert weil die generische Methode nicht * zweiterWert macht, nur Anzahl * Preis. Kein Plan warum
+    {
+        int kosten = 0;
+
+        foreach (var zeile in tabelle)
+        {
+            kosten += zeile.TotalPreis;
+        }
+        return kosten;
+    }
+
+    public static int SummeGesamtKostenAdaptivSystem(ObservableCollection<AdaptivSystem> tabelle)
     {
         int kosten = 0;
 

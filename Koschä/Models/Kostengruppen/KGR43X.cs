@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text.Json.Serialization;
 using Koschä.Helpers;
 using Koschä.Helpers.KGRHelper;
@@ -8,30 +9,15 @@ namespace Koschä.Models.Kostengruppen;
 public class Kostengruppe43X: IKostengruppe
 {
     [JsonInclude]
-    public ObservableCollection<DoppelSystem> Tabelle1
-    {
-        get; set;
-    }
+    public ObservableCollection<DoppelSystem> Tabelle1;
     [JsonInclude]
-    public ObservableCollection<RLTSystem> Tabelle2
-    {
-        get; set;
-    }
+    public ObservableCollection<RLTSystem> Tabelle2;
     [JsonInclude]
-    public ObservableCollection<AktivFlächenSystem> Tabelle3
-    {
-        get; set;
-    }
+    public ObservableCollection<AktivFlächenSystem> Tabelle3;
     [JsonInclude]
-    public ObservableCollection<RLTSystem> Tabelle4
-    {
-        get; set;
-    }
+    public ObservableCollection<RLTSystem> Tabelle4;
     [JsonInclude]
-    public ObservableCollection<DoppelDoubleSystem> Tabelle5
-    {
-        get; set;
-    }
+    public ObservableCollection<DoppelDoubleSystem> Tabelle5;
 
     public Kostengruppe43X()
     {
@@ -44,10 +30,9 @@ public class Kostengruppe43X: IKostengruppe
 
     public void Setup()
     {
-        
         Tabelle1 = KGRUpdate<DoppelSystem>.SystemTabelleUmBereiche(Tabelle1, "431");
-        Tabelle3 = KGRUpdate<AktivFlächenSystem>.SystemTabelleUmBereiche(Tabelle3, "432");
-
+        Tabelle3 = KGRUpdate<AktivFlächenSystem>.SystemTabelleUmBereiche(Tabelle3, "432"); //hier auch bereiche nicht geupdated
+        
         if (Tabelle5.Count == 0)
         {
             Tabelle5 = _43XHelper.FügeKälteHinzu();
@@ -58,8 +43,8 @@ public class Kostengruppe43X: IKostengruppe
     public int GetAlleTabellenkosten()
     {
         int gesamtkosten = 0;
-        gesamtkosten += SystemGet<RLTSystem>.SummeGesamtKosten(Tabelle2);
-        gesamtkosten += SystemGet<RLTSystem>.SummeGesamtKosten(Tabelle4);
+        gesamtkosten += SystemGet<RLTSystem>.SummeGesamtKostenRLT(Tabelle2);
+        gesamtkosten += SystemGet<RLTSystem>.SummeAnzahl(Tabelle4);
         gesamtkosten += SystemGet<DoppelDoubleSystem>.SummeGesamtKostenDoppelDoubleSystem(Tabelle5);
         return gesamtkosten;
     }
@@ -68,7 +53,6 @@ public class Kostengruppe43X: IKostengruppe
     {
         UpdateTabelle2();
         UpdateTabelle5();
-
     }
 
     private void UpdateTabelle2()
@@ -83,12 +67,14 @@ public class Kostengruppe43X: IKostengruppe
         if (Projekt.GetInstance().KGR420.Tabelle3.Count > 0)
         {
             Projekt.GetInstance().KGR420.Tabelle3[2].Anzahl = wärme;
+            
         }
     }
 
     private void UpdateTabelle5()
     {
         Tabelle5 = _43XHelper.UpdateKälte(Tabelle5);
+        
     }
 
     public void Tab4AddSystem()

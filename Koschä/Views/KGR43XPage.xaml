@@ -11,25 +11,9 @@
         <Grid x:Name="ContentArea"
               Margin="20 50 20 50"
               HorizontalAlignment="Left">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Spezifirche RLT-Anlagen und Leistungen" FontSize="20" Grid.Column="0" Grid.Row="1" Margin="20 0 0 0"/>
+            <StackPanel>
+            <TextBlock Text="Spezifirche RLT-Anlagen und Leistungen" FontSize="20" Margin="20 0 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="All"
@@ -38,14 +22,13 @@
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
-                    Grid.Column="0"
-                    Grid.Row="2"
                     CellEditEnded="DataGrid_CellEditEnded"
-                    Margin="20 10 0 0">
+                    Margin="20 10 0 0"
+                    HorizontalAlignment="Left">
 
                 <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" />
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Raumhöhe in m" />
                     <controls:DataGridTextColumn Binding="{Binding ZweiterWert}" Header="Luftwechsel" />
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Luftleistung in m^3/h"/>
@@ -53,7 +36,8 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <TextBlock Text="RLT-Anlage ZU und ABL" FontSize="20" Grid.Column="0" Grid.Row="3" Margin="20 30 0 0"/>
+
+            <TextBlock Text="RLT-Anlage ZU und ABL" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="All"
@@ -62,25 +46,21 @@
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
-                    Grid.Column="0"
-                    Grid.Row="4"
                     CellEditEnded="DataGrid_CellEditEnded"
                     Margin="20 10 0 0">
 
                 <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Luftmenge in m^3/h" />
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Luftmenge in m^3/h" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in €/m^3/h" />
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten"/>
-                    <controls:DataGridTextColumn Binding="{Binding Wrg}" Header="WRG in kW" />
-                    <controls:DataGridTextColumn Binding="{Binding DynamischeHeizung}" Header="dynamische Heizung in kW" />
-                    <controls:DataGridTextColumn Binding="{Binding Krg}" Header="KRG in kW"/>
-                    <controls:DataGridTextColumn Binding="{Binding DynamischeKälte}" Header="dynamische Kälte in kW" />
+                        <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten"/>
+                        <controls:DataGridTextColumn Binding="{Binding DynamischeHeizung}" Header="dynamische Heizung in kW" />
+                        <controls:DataGridTextColumn Binding="{Binding DynamischeKälte}" Header="dynamische Kälte in kW" />
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <TextBlock Text="Statische Kälte" FontSize="20" Grid.Column="0" Grid.Row="5" Margin="20 30 0 0"/>
+            <TextBlock Text="Statische Kälte" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="All"
@@ -89,14 +69,13 @@
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle3, Mode=OneWay}"
-                    Grid.Column="0"
-                    Grid.Row="6"
                     CellEditEnded="DataGrid_CellEditEnded"
-                    Margin="20 10 0 0">
+                    Margin="20 10 0 0"
+                    HorizontalAlignment="Left">
 
                 <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" />
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Belegungsfaktor}" Header="Belegungsfaktor" />
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="aktive Fläche in m^2"/>
                     <controls:DataGridTextColumn Binding="{Binding Systemname}" Header="Systemname" />
@@ -106,7 +85,7 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <TextBlock Text="Sonderkälte" FontSize="20" Grid.Column="0" Grid.Row="7" Margin="20 30 0 0"/>
+            <TextBlock Text="Sonderkälte" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="All"
@@ -115,13 +94,12 @@
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle4, Mode=OneWay}"
-                    Grid.Column="0"
-                    Grid.Row="8"
                     CellEditEnded="DataGrid_CellEditEnded"
-                    Margin="20 10 0 0">
+                    Margin="20 10 0 0"
+                    HorizontalAlignment="Left">
 
                 <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="System/Raum" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Kühlstg. spez. in kW" />
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Räume/Einheiten" />
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="dynamische Kälte" />
@@ -129,9 +107,9 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Grid.Column="0" Grid.Row="9" Name="AddButton" Content="Button" Click="AddButton_Click" Margin="30 10 0 0"/>
+            <Button Name="AddButton" Content="Button" Click="AddButton_Click" Margin="30 10 0 0"/>
 
-            <TextBlock Text="Kältetechnische Anlagen" FontSize="20" Grid.Column="0" Grid.Row="10" Margin="20 30 0 0"/>
+            <TextBlock Text="Kältetechnische Anlagen" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="All"
@@ -140,10 +118,9 @@
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle5, Mode=OneWay}"
-                    Grid.Column="0"
-                    Grid.Row="11"
                     CellEditEnded="DataGrid_CellEditEnded"
-                    Margin="20 10 0 0">
+                    Margin="20 10 0 0"
+                    HorizontalAlignment="Left">
 
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Anlage" />
@@ -154,6 +131,7 @@
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+            </StackPanel>
         </Grid>
     </ScrollViewer>
 </Page>

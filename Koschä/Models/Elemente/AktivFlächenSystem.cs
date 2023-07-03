@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Koschä.Models.Elemente;
+
+
 public partial class AktivFlächenSystem: AdaptivSystem
 {
     
@@ -15,31 +17,31 @@ public partial class AktivFlächenSystem: AdaptivSystem
     [NotifyPropertyChangedFor(nameof(TotalPreis))]
     private double belegungsfaktor;
 
-    public new int TotalPreis => (int) (Anzahl * belegungsfaktor); // totalpreis == aktive Fläche
-    public new int LeistungGesamt => (int) Math.Ceiling(((double) preis * (double)Anzahl * belegungsfaktor) / 1000.0); //Kälteleistung in kW
+    public new int TotalPreis => (int) (Anzahl * Belegungsfaktor); // totalpreis == aktive Fläche
+    public new int LeistungGesamt => (int) Math.Ceiling(((double) Preis * (double)Anzahl * Belegungsfaktor) / 1000.0); //Kälteleistung in kW
 
     public AktivFlächenSystem()
     {
         Name = "???";
         Anzahl = 0;
-        preis = 0;
+        Preis = 0;
         Systemname = string.Empty;
-        belegungsfaktor = 0.7;
+        Belegungsfaktor = 0.7;
     }
     public AktivFlächenSystem(string n, int a, int p)
     {
         Name = n;
         Anzahl = a;
-        preis = p;
+        Preis = p;
         Systemname = string.Empty;
-        belegungsfaktor = 0.7;
+        Belegungsfaktor = 0.7;
     }
     public AktivFlächenSystem(Bereich bereich, int p)
     {
         Name = bereich.Name;
         Anzahl = bereich.Anzahl;
-        preis = p;
+        Preis = p;
         Systemname = string.Empty;
-        belegungsfaktor = 0.7;
+        Belegungsfaktor = 0.7;
     }
-}
+} 

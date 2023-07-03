@@ -13,25 +13,11 @@
               HorizontalAlignment="Left"
               Margin="20 50 20 50">
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+            <StackPanel>
 
-            <TextBlock Text="Statische Heizung" FontSize="20" Grid.Column="0" Grid.Row="1" Margin="20 0 0 0"/>
+            <TextBlock Text="Statische Heizung" FontSize="20" Margin="20 0 0 0"/>
+            <TextBlock Text="Hinweis: Die Investkosten werden entweder mit €/m^2 oder €/kW berechnet, je nachdem ob die €/kW Zelle gleich 0 ist." TextWrapping="WrapWholeWords"
+                       FontSize="12" Margin="20 10 0 -5" Width="700" HorizontalAlignment="Left"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="All"
@@ -40,14 +26,14 @@
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
-                Grid.Row="2"
                 CellEditEnded="DataGrid_CellEditEnded"
-                Margin="20 10 0 0">
+                Margin="20 10 0 0"
+                >
                 <controls:DataGrid.Columns>
 
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Systemname}" Header="Systemname" IsReadOnly="False"/>
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro m^2" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding PreisProkW}" Header="Preis in € pro kW" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding WattproM}" Header="Leistung in Watt pro m^2" IsReadOnly="False"/>
@@ -57,7 +43,7 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <TextBlock Text="Thermoaktive Elemente" FontSize="20" Grid.Column="0" Grid.Row="3" Margin="20 30 0 0"/>
+            <TextBlock Text="Thermoaktive Elemente" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="All"
@@ -66,14 +52,14 @@
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
-                Grid.Row="4"
                 CellEditEnded="DataGrid_CellEditEnded"
-                Margin="20 10 0 0">
+                Margin="20 10 0 0"
+                HorizontalAlignment="Left">
                 <controls:DataGrid.Columns>
 
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Systemname}" Header="Systemname" IsReadOnly="False"/>
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro m^2" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding WattproM}" Header="Leistung in  Watt pro m^2" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding LeistungGesamt}" Header="Gesamtleistung in kW" IsReadOnly="True"/>
@@ -82,7 +68,7 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <TextBlock Text="Wärmebereitstellung" FontSize="20" Grid.Column="0" Grid.Row="5" Margin="20 30 0 0"/>
+            <TextBlock Text="Wärmebereitstellung" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="All"
@@ -91,21 +77,22 @@
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle3, Mode=OneWay}"
-                Grid.Row="6"
-                Margin="20 10 0 0">
+                Margin="20 10 0 0"
+                CellEditEnded="DataGrid_CellEditEnded"
+                HorizontalAlignment="Left">
                 <controls:DataGrid.Columns>
 
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Heizkreise" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Leistung in kW" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro kW" IsReadOnly="False"/>
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten" IsReadOnly="True"/>
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Content="Neues System" Click="AddTab3Button_Click" Grid.Row="7" Grid.Column="1" Margin="30 10 0 0"/>
+            <Button Content="Neues System" Click="AddTab3Button_Click" Margin="30 10 0 0"/>
 
-            <TextBlock Text="Wärmeerzeugung" FontSize="20" Grid.Column="0" Grid.Row="8" Margin="20 30 0 0"/>
+            <TextBlock Text="Wärmeerzeugung" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="All"
@@ -114,18 +101,19 @@
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle4, Mode=OneWay}"
-                Grid.Row="9"
-                Margin="20 10 0 0">
+                Margin="20 10 0 0"
+                HorizontalAlignment="Left">
                 <controls:DataGrid.Columns>
 
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Heizkreise" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Leistung in kW" IsReadOnly="False"/>
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro kW" IsReadOnly="False"/>
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten" IsReadOnly="False"/>
+                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten" IsReadOnly="True"/>
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Content="Neues System" Click="AddTab4Button_Click" Grid.Row="10" Grid.Column="1" Margin="30 10 0 0"/>
+            <Button Content="Neues System" Click="AddTab4Button_Click" Margin="30 10 0 0"/>
+            </StackPanel>
         </Grid>
     </ScrollViewer>
 </Page>

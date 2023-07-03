@@ -7,18 +7,10 @@
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
     <ScrollViewer>
-        <Grid x:Name="ContentArea">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <Grid x:Name="ContentArea"
+              HorizontalAlignment="Left">
+
+            <StackPanel>
 
             <controls:DataGrid 
                     AutoGenerateColumns="False"
@@ -28,19 +20,18 @@
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
-                    Grid.Column="0"
-                    Grid.Row="1"
-                    Margin="20 10 0 0">
+                    Margin="20 10 0 0"
+                    HorizontalAlignment="Left">
 
                 <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Gewerk" />
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Gewerk" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="In Prozent" />
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Absolute Kosten" />
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="MSR-Technik"/>
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <TextBlock Text="Sonstige Maßnahmen" FontSize="20" Grid.Column="0" Grid.Row="2" Margin="20 30 0 0"/>
+            <TextBlock Text="Sonstige Maßnahmen" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="All"
@@ -49,9 +40,8 @@
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
                     ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
-                    Grid.Column="0"
-                    Grid.Row="3"
-                    Margin="20 10 0 0">
+                    Margin="20 10 0 0"
+                    HorizontalAlignment="Left">
 
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Maßnahmen" />
@@ -60,8 +50,9 @@
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten"/>
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
-            <Button Name="Tabelle1KGR410Button" Content="Neues System" Grid.Row="4" Click="Tabelle1KGR410Button_Click" Margin="30 10 0 0"/>
+            <Button Name="Tabelle1KGR410Button" Content="Neues System" Click="Tabelle1KGR410Button_Click" Margin="30 10 0 0"/>
 
+            </StackPanel>
         </Grid>
         </ScrollViewer>
 </Page>

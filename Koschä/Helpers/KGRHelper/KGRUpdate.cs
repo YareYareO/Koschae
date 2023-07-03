@@ -11,7 +11,7 @@ internal class KGRUpdate<T> where T : SystemTeil, new()
         Dictionary<string, int> dict = getRichtigeDictionary(kgrname);
         foreach (var bereich in Projekt.GetInstance().AlleBereiche) 
         {
-            if (!tabelle.Any(system => (system.Name == bereich.Name)) & bereich.Anzahl != 0)
+            if (!tabelle.Any(system => (system.Name == bereich.Name)) & bereich.Anzahl != 0) //gibt es neue Bereiche? Dann füg ein neues System hinzu
             {
                 object[] constructorParams = new object[2];
                 try
@@ -34,24 +34,21 @@ internal class KGRUpdate<T> where T : SystemTeil, new()
                     Debug.WriteLine("Instanz ist null");
                 }
             }
-            else if (tabelle.Any(system => (system.Name == bereich.Name))) //updated die Fläche jeder Zeile
+            else if (true) //sind die Werte der Bereiche geändert? update die Fläche jeder Zeile und falls Anzahl gleich null ist, lösche die zeile
             {
-                List<T> leerezeilen = new List<T>();
+                T leerezeile = new T();
 
-                foreach (T zeile in tabelle)
+                tabelle.Any(system =>
                 {
-                    if (zeile.Name == bereich.Name)
+                    if (system.Name == bereich.Name)
                     {
-                        zeile.Anzahl = bereich.Anzahl;
-
-                        if (bereich.Anzahl == 0) leerezeilen.Add(zeile);
+                        system.Anzahl = bereich.Anzahl;
+                        if (bereich.Anzahl == 0) leerezeile = system;
+                        return true;
                     }
-                }
-                foreach (var leerzeile in leerezeilen)
-                {
-                    tabelle.Remove(leerzeile);
-                }
-
+                    return false;
+                });
+                tabelle.Remove(leerezeile);
             }
         }
         return tabelle;
@@ -88,4 +85,23 @@ internal class KGRUpdate<T> where T : SystemTeil, new()
         return dictionary;
     }
 
+    public static ObservableCollection<T> SystemTabelleUmAlleBereiche(ObservableCollection<T> tabelle)
+    {
+        foreach (var bereich in Projekt.GetInstance().AlleBereiche)
+        {
+            object[] constructorParams = new object[2];
+            Bereich leererBereich = new Bereich(bereich.Name);
+            constructorParams[0] = leererBereich;
+
+            if (Activator.CreateInstance(typeof(T), constructorParams) is T instance)
+            {
+                tabelle.Add(instance);
+            }
+            else
+            {
+                Debug.WriteLine("Instanz ist null");
+            }
+        }
+        return tabelle;
+    }
 }

@@ -10,23 +10,9 @@
         <Grid x:Name="ContentArea"
           Margin="20 50 20 50"
           HorizontalAlignment="Left">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Sprinklerköpte" FontSize="20" Grid.Column="0" Grid.Row="1" Margin="20 0 0 0"/>
+            <StackPanel>
+            <TextBlock Text="Sprinklerköpte" FontSize="20" Margin="20 0 0 0"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="All"
@@ -35,11 +21,10 @@
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
-                Grid.Row="2"
-                Grid.Column="0"
-                Margin="20 10 0 0">
+                Margin="20 10 0 0"
+                HorizontalAlignment="Left">
                 <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Sprinklerköpfe"/>
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro Einheit" />
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten" />
@@ -47,7 +32,7 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <TextBlock Text="Feuerlöschanlagen" FontSize="20" Grid.Column="0" Grid.Row="3" Margin="20 30 0 0"/>
+            <TextBlock Text="Feuerlöschanlagen" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="All"
@@ -56,9 +41,8 @@
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle3, Mode=OneWay}"
-                Grid.Row="4"
-                Grid.Column="0"
-                Margin="20 10 0 0">
+                Margin="20 10 0 0"
+                HorizontalAlignment="Left">
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Anlage" />
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Anzahl" />
@@ -69,9 +53,9 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Name="ButtonTab3" Click="ButtonTab3_Click" Content="Neue Zeile" Grid.Row="5" Margin="30 10 0 0"/>
+            <Button Name="ButtonTab3" Click="ButtonTab3_Click" Content="Neue Zeile" Margin="30 10 0 0"/>
 
-            <TextBlock Text="Sonstige Nutzerspezifische Anlagen" FontSize="20" Grid.Column="0" Grid.Row="6" Margin="20 30 0 0"/>
+            <TextBlock Text="Sonstige Nutzerspezifische Anlagen" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="All"
@@ -80,9 +64,8 @@
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
-                Grid.Row="7"
-                Grid.Column="0"
-                Margin="20 10 0 0">
+                Margin="20 10 0 0"
+                HorizontalAlignment="Left">
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Anlage" />
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Anzahl" />
@@ -92,7 +75,8 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Name="ButtonTab1" Click="ButtonTab1_Click" Content="Neue Zeile" Grid.Row="8" Margin="30 10 0 0"/>
+            <Button Name="ButtonTab1" Click="ButtonTab1_Click" Content="Neue Zeile" Margin="30 10 0 0"/>
+            </StackPanel>
         </Grid>
     </ScrollViewer>
 </Page>

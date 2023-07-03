@@ -38,6 +38,5 @@ internal class _420Helper
         tabelle4.Add(zeile);
 
         return tabelle4;
-
     }
 }

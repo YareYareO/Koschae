@@ -12,10 +12,8 @@
               Margin="20 50 20 50"
               Width="Auto"
               HorizontalAlignment="Left">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+
+            <StackPanel>
 
             <controls:DataGrid
                 AutoGenerateColumns="False"
@@ -25,16 +23,16 @@
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle, Mode=OneWay}"
-                Grid.Row="1"
                 Margin="20 10 0 0">
                 <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" />
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" />
+                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Preis in € pro m^2" />
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten" />
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+            </StackPanel>
         </Grid>
     </ScrollViewer>
 </Page>

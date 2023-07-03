@@ -23,7 +23,7 @@ public class Kostengruppe470: IKostengruppe
 
     public void Setup()
     {
-        Tabelle2 = KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(Tabelle2, "470");
+        if(Tabelle2.Count == 0) Tabelle2 = KGRUpdate<SystemTeil>.SystemTabelleUmAlleBereiche(Tabelle2);
         if(Tabelle3.Count == 0) Tabelle3 = _470Helper.UpdateTabelle3();
 
     }

@@ -17,7 +17,7 @@ public sealed partial class KGR420Page : Page
 
     private void DataGrid_CellEditEnded(object sender, CommunityToolkit.WinUI.UI.Controls.DataGridCellEditEndedEventArgs e)
     {
-        ViewModel.kgr.UpdateTabelle3();
+        ViewModel.kgr.UpdateTabellen();
     }
 
     private void AddTab3Button_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

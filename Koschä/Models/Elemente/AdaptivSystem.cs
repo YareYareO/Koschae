@@ -7,11 +7,6 @@ public partial class AdaptivSystem: SystemTeil, IAdaptivSystem
 {
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(TotalPreis))]
-    [NotifyPropertyChangedFor(nameof(LeistungGesamt))]
-    private int anzahl;
-
-    [ObservableProperty]
     private string systemname;
 
     [ObservableProperty]
@@ -23,30 +18,32 @@ public partial class AdaptivSystem: SystemTeil, IAdaptivSystem
     [NotifyPropertyChangedFor(nameof(TotalPreis))]
     private int preisProkW;
 
-    public int LeistungGesamt => (int) Math.Ceiling( (double) (WattproM) * (double) (anzahl) / 1000.0);
+    public int LeistungGesamt => (int) Math.Ceiling( (double) (WattproM) * (double) (Anzahl) / 1000.0);
 
-    public new int TotalPreis => WirdMitMeterBerechnet() ? (anzahl * Preis) : (LeistungGesamt * preisProkW);
+    public new int TotalPreis => WirdMitMeterBerechnet() ? (Anzahl * Preis) : (LeistungGesamt * PreisProkW);
 
     public AdaptivSystem()
     {
         Name = "???";
-        anzahl = 0;
+        Anzahl = 0;
         Preis = 0;
+        Systemname = string.Empty;
         systemname = string.Empty;
         WattproM = 0;
-        preisProkW = 0;
+        PreisProkW = 0;
     }
     public AdaptivSystem(Bereich bereich, int wattp)
     {
         Name = bereich.Name;
-        anzahl = bereich.Anzahl;
+        Anzahl = bereich.Anzahl;
         Preis = 0;
-        wattproM = wattp;
+        WattproM = wattp;
+        Systemname = string.Empty;
         systemname = string.Empty;
-        preisProkW = 0;
+        PreisProkW = 0;
     }
     private bool WirdMitMeterBerechnet()
     {
-        return (preisProkW == 0);
+        return (PreisProkW == 0);
     }
 }

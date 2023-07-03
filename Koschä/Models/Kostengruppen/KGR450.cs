@@ -9,10 +9,7 @@ namespace Koschä.Models.Kostengruppen;
 public class Kostengruppe450: IKostengruppe
 {
     [JsonInclude]
-    public ObservableCollection<SystemTeil> Tabelle
-    {
-        get; set;
-    }
+    public ObservableCollection<SystemTeil> Tabelle;
 
     public Kostengruppe450()
     {
