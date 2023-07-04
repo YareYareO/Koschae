@@ -10,10 +10,10 @@ internal class _420Helper
         ObservableCollection<SystemTeil> tabelle = new ObservableCollection<SystemTeil>();
 
         SystemTeil s1 = new SystemTeil("Statische HZG / dynamische HZG", 
-            a: AdaptivSysGet<AdaptivSystem>.SummeKW(Projekt.GetInstance().KGR420.Tabelle1),
+            a: AdaptivSysGet<AdaptivSystem>.SummeKW(Projekt.GetInstance().KGR420.Statisches),
             p: 300);
         SystemTeil s2 = new SystemTeil("Thermoaktive Elemente",
-            a: AdaptivSysGet<AdaptivSystem>.SummeKW(Projekt.GetInstance().KGR420.Tabelle2),
+            a: AdaptivSysGet<AdaptivSystem>.SummeKW(Projekt.GetInstance().KGR420.Thermoaktives),
             p: 650);
         SystemTeil s3 = new SystemTeil("Dynamische Wärme",
             a: _43XHelper.GetSummeDynHeizung(),
@@ -32,7 +32,7 @@ internal class _420Helper
         ObservableCollection<SystemTeil> tabelle4 = new ObservableCollection<SystemTeil>();
 
         SystemTeil zeile = new SystemTeil("Fernwärmestation",
-            a: SystemGet<SystemTeil>.SummeAnzahl(Projekt.GetInstance().KGR420.Tabelle3),
+            a: SystemGet<SystemTeil>.SummeAnzahl(Projekt.GetInstance().KGR420.Warmebereitstellung),
             p:80);
 
         tabelle4.Add(zeile);

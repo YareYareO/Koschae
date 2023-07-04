@@ -23,9 +23,10 @@
                 AlternatingRowBackground="#e6e6e6"
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
-                ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
+                ItemsSource="{x:Bind ViewModel.kgr.Sanitar, Mode=OneWay}"
                 Margin="20 10 0 0"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                CellEditEnded="DataGrid_CellEditEnded">
                 
                 <controls:DataGrid.Columns >
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
@@ -35,8 +36,9 @@
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+                <TextBlock Text="0" Name="Sanitär" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
 
-            <TextBlock Text="Zusatzsysteme" FontSize="20" Margin="20 30 0 0"/>
+                <TextBlock Text="Zusatzsysteme" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="All"
@@ -44,8 +46,9 @@
                 AlternatingRowBackground="#e6e6e6"
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
-                ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
-                Margin="20 10 0 0">
+                ItemsSource="{x:Bind ViewModel.kgr.Sonstiges, Mode=OneWay}"
+                Margin="20 10 0 0"
+                CellEditEnded="DataGrid_CellEditEnded">
                 
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="System" />
@@ -55,8 +58,10 @@
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+            <Button Content="Neues System" Click="Button_Click" Margin="30 5 0 0"/>
+            <TextBlock Text="0" Name="Sonstige" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
 
-            <Button Content="Neues System" Click="Button_Click" Margin="30 10 0 0"/>
+            
             </StackPanel>
         </Grid>
 

@@ -23,7 +23,8 @@
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
                 ItemsSource="{x:Bind ViewModel.kgr.Tabelle, Mode=OneWay}"
-                Margin="20 10 0 0">
+                Margin="20 10 0 0"
+                CellEditEnded="DataGrid_CellEditEnded">
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="True"/>
@@ -32,6 +33,7 @@
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+            <TextBlock Text="0" Name="Gesamtkosten" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

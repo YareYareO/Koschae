@@ -3,37 +3,47 @@ using Koschä.Helpers.KGRHelper;
 using Koschä.Helpers;
 using Koschä.Models.Elemente;
 using System.Text.Json.Serialization;
+using System.Globalization;
 
 namespace Koschä.Models.Kostengruppen;
 public partial class Kostengruppe410 : IKostengruppe
 {
     [JsonInclude]
-    public ObservableCollection<SystemTeil> Tabelle1;
+    public ObservableCollection<SystemTeil> Sanitar;
     [JsonInclude]
-    public ObservableCollection<SystemTeil> Tabelle2;
+    public ObservableCollection<SystemTeil> Sonstiges;
 
     public Kostengruppe410() 
     {
-        Tabelle1 = new ObservableCollection<SystemTeil>();
-        Tabelle2 = new ObservableCollection<SystemTeil>();
+        Sanitar = new ObservableCollection<SystemTeil>();
+        Sonstiges = new ObservableCollection<SystemTeil>();
     }
 
     public void Setup()
     {
-        Tabelle1 = KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(Tabelle1, "410");
-        if(Tabelle2.Count == 0) Tabelle2 = _410Helper.SetupTabelle2(Tabelle2);
+        Sanitar = KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(Sanitar, "410");
+        if(Sonstiges.Count == 0) Sonstiges = _410Helper.SetupTabelle2(Sonstiges);
+
     }
 
     public int GetAlleTabellenkosten()
     {
         int gesamtkosten = 0;
-        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle1);
-        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle2);
+        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Sanitar);
+        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Sonstiges);
         return gesamtkosten;
     }
 
-    public void Tab2AddSystem()
+    public void SonstigeAddSystem()
     {
-        Tabelle2.Add(new SystemTeil());
+        Sonstiges.Add(new SystemTeil());
+    }
+
+    public string[] UpdateGesamtKosten()
+    {
+        string[] zahlen = new string[2];
+        zahlen[0] = SystemGet<SystemTeil>.SummeGesamtKosten(Sanitar).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        zahlen[1] = SystemGet<SystemTeil>.SummeGesamtKosten(Sonstiges).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        return zahlen;
     }
 }

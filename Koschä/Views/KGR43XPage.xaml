@@ -13,31 +13,31 @@
               HorizontalAlignment="Left">
 
             <StackPanel>
-            <TextBlock Text="Spezifirche RLT-Anlagen und Leistungen" FontSize="20" Margin="20 0 0 0"/>
-            <controls:DataGrid 
+            <TextBlock Text="Spezifische RLT-Anlagen und Leistungen" FontSize="20" Margin="20 0 0 0"/>
+                <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="All"
                     Background="#f8f8f8"
                     AlternatingRowBackground="#e6e6e6"
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
-                    ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
+                    ItemsSource="{x:Bind ViewModel.kgr.RLTTabelle1, Mode=OneWay}"
                     CellEditEnded="DataGrid_CellEditEnded"
                     Margin="20 10 0 0"
                     HorizontalAlignment="Left">
 
-                <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="True"/>
-                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Raumhöhe in m" />
-                    <controls:DataGridTextColumn Binding="{Binding ZweiterWert}" Header="Luftwechsel" />
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Luftleistung in m^3/h"/>
+                    <controls:DataGrid.Columns>
+                        <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
+                        <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="True"/>
+                        <controls:DataGridTextColumn Binding="{Binding Preis}" Header="Raumhöhe in m" />
+                        <controls:DataGridTextColumn Binding="{Binding ZweiterWert}" Header="Luftwechsel" />
+                        <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Luftleistung in m^3/h"/>
 
-                </controls:DataGrid.Columns>
-            </controls:DataGrid>
+                    </controls:DataGrid.Columns>
+                </controls:DataGrid>
 
 
-            <TextBlock Text="RLT-Anlage ZU und ABL" FontSize="20" Margin="20 30 0 0"/>
+                <TextBlock Text="RLT-Anlage ZU und ABL" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="All"
@@ -45,7 +45,7 @@
                     AlternatingRowBackground="#e6e6e6"
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
-                    ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
+                    ItemsSource="{x:Bind ViewModel.kgr.RLTTabelle2, Mode=OneWay}"
                     CellEditEnded="DataGrid_CellEditEnded"
                     Margin="20 10 0 0">
 
@@ -59,33 +59,34 @@
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+            <TextBlock Text="0" Name="RLT2" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
 
             <TextBlock Text="Statische Kälte" FontSize="20" Margin="20 30 0 0"/>
-            <controls:DataGrid 
+                <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="All"
                     Background="#f8f8f8"
                     AlternatingRowBackground="#e6e6e6"
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
-                    ItemsSource="{x:Bind ViewModel.kgr.Tabelle3, Mode=OneWay}"
+                    ItemsSource="{x:Bind ViewModel.kgr.StatischeKalte, Mode=OneWay}"
                     CellEditEnded="DataGrid_CellEditEnded"
                     Margin="20 10 0 0"
                     HorizontalAlignment="Left">
 
-                <controls:DataGrid.Columns>
-                    <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
-                    <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="True"/>
-                    <controls:DataGridTextColumn Binding="{Binding Belegungsfaktor}" Header="Belegungsfaktor" />
-                    <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="aktive Fläche in m^2"/>
-                    <controls:DataGridTextColumn Binding="{Binding Systemname}" Header="Systemname" />
-                    <controls:DataGridTextColumn Binding="{Binding Preis}" Header="spezielle Kälteleistung" />
-                    <controls:DataGridTextColumn Binding="{Binding LeistungGesamt}" Header="Kälteleistung in kW" />
+                    <controls:DataGrid.Columns>
+                        <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
+                        <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="NF-Fläche in m^2" IsReadOnly="True"/>
+                        <controls:DataGridTextColumn Binding="{Binding Belegungsfaktor}" Header="Belegungsfaktor" />
+                        <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="aktive Fläche in m^2"/>
+                        <controls:DataGridTextColumn Binding="{Binding Systemname}" Header="Systemname" />
+                        <controls:DataGridTextColumn Binding="{Binding Preis}" Header="spezielle Kälteleistung" />
+                        <controls:DataGridTextColumn Binding="{Binding LeistungGesamt}" Header="Kälteleistung in kW" />
 
-                </controls:DataGrid.Columns>
-            </controls:DataGrid>
+                    </controls:DataGrid.Columns>
+                </controls:DataGrid>
 
-            <TextBlock Text="Sonderkälte" FontSize="20" Margin="20 30 0 0"/>
+                <TextBlock Text="Sonderkälte" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid 
                     AutoGenerateColumns="False"
                     GridLinesVisibility="All"
@@ -93,7 +94,7 @@
                     AlternatingRowBackground="#e6e6e6"
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
-                    ItemsSource="{x:Bind ViewModel.kgr.Tabelle4, Mode=OneWay}"
+                    ItemsSource="{x:Bind ViewModel.kgr.SonderKalte, Mode=OneWay}"
                     CellEditEnded="DataGrid_CellEditEnded"
                     Margin="20 10 0 0"
                     HorizontalAlignment="Left">
@@ -108,6 +109,7 @@
             </controls:DataGrid>
 
             <Button Name="AddButton" Content="Button" Click="AddButton_Click" Margin="30 10 0 0"/>
+            <TextBlock Text="0" Name="SonderKalte" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
 
             <TextBlock Text="Kältetechnische Anlagen" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid 
@@ -117,7 +119,7 @@
                     AlternatingRowBackground="#e6e6e6"
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
-                    ItemsSource="{x:Bind ViewModel.kgr.Tabelle5, Mode=OneWay}"
+                    ItemsSource="{x:Bind ViewModel.kgr.KalteAnlagen, Mode=OneWay}"
                     CellEditEnded="DataGrid_CellEditEnded"
                     Margin="20 10 0 0"
                     HorizontalAlignment="Left">
@@ -131,6 +133,7 @@
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+            <TextBlock Text="0" Name="KalteAnlagen" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

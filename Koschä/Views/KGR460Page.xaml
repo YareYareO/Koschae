@@ -20,8 +20,9 @@
                 AlternatingRowBackground="#e6e6e6"
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
-                ItemsSource="{x:Bind ViewModel.kgr.Tabelle, Mode=OneWay}"
-                Margin="20 10 0 0">
+                ItemsSource="{x:Bind ViewModel.kgr.Aufzuge, Mode=OneWay}"
+                Margin="20 10 0 0"
+                CellEditEnded="DataGrid_CellEditEnded">
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Aufzüge" />
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Anzahl" />
@@ -31,7 +32,8 @@
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
-            <Button Click="Button_Click" Content="Neuer Aufzug" Margin="30 10 0 0"/>
+            <Button Click="Button_Click" Content="Neuer Aufzug" Margin="30 5 0 0"/>
+            <TextBlock Text="0" Name="Aufzuge" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

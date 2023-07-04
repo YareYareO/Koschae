@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text.Json.Serialization;
 using Koschä.Helpers;
 using Koschä.Helpers.KGRHelper;
@@ -8,42 +9,51 @@ namespace Koschä.Models.Kostengruppen;
 public class Kostengruppe470: IKostengruppe
 {
     [JsonInclude]
-    public ObservableCollection<SystemTeil> Tabelle1;
+    public ObservableCollection<SystemTeil> Sprinkleranlagen;
     [JsonInclude]
-    public ObservableCollection<SystemTeil> Tabelle2;
+    public ObservableCollection<DoppelSystem> Feuerloschanlagen;
     [JsonInclude]
-    public ObservableCollection<DoppelSystem> Tabelle3;
+    public ObservableCollection<SystemTeil> Sonstiges;
 
     public Kostengruppe470()
     {
-        Tabelle1 = new ObservableCollection<SystemTeil>();
-        Tabelle2 = new ObservableCollection<SystemTeil>();
-        Tabelle3 = new ObservableCollection<DoppelSystem>();
+        Sonstiges = new ObservableCollection<SystemTeil>();
+        Sprinkleranlagen = new ObservableCollection<SystemTeil>();
+        Feuerloschanlagen = new ObservableCollection<DoppelSystem>();
     }
 
     public void Setup()
     {
-        if(Tabelle2.Count == 0) Tabelle2 = KGRUpdate<SystemTeil>.SystemTabelleUmAlleBereiche(Tabelle2);
-        if(Tabelle3.Count == 0) Tabelle3 = _470Helper.UpdateTabelle3();
+        if(Sprinkleranlagen.Count == 0) Sprinkleranlagen = KGRUpdate<SystemTeil>.SystemTabelleUmAlleBereiche(Sprinkleranlagen);
+        if(Feuerloschanlagen.Count == 0) Feuerloschanlagen = _470Helper.UpdateTabelle3();
 
     }
 
     public int GetAlleTabellenkosten()
     {
         int gesamtkosten = 0;
-        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle1);
-        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle2);
-        gesamtkosten += SystemGet<DoppelSystem>.SummeGesamtKostenDoppelSystem(Tabelle3);
+        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Sonstiges);
+        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Sprinkleranlagen);
+        gesamtkosten += SystemGet<DoppelSystem>.SummeGesamtKostenDoppelSystem(Feuerloschanlagen);
         return gesamtkosten;
     }
 
     public void Tab1AddSystem()
     {
-        Tabelle1.Add(new SystemTeil());
+        Sonstiges.Add(new SystemTeil());
     }
 
     public void Tab3AddSystem()
     {
-        Tabelle3.Add(new DoppelSystem());
+        Feuerloschanlagen.Add(new DoppelSystem());
+    }
+
+    public string[] UpdateGesamtKosten()
+    {
+        string[] zahlen = new string[3];
+        zahlen[0] = SystemGet<SystemTeil>.SummeGesamtKosten(Sprinkleranlagen).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        zahlen[1] = SystemGet<DoppelSystem>.SummeGesamtKostenDoppelSystem(Feuerloschanlagen).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        zahlen[2] = SystemGet<SystemTeil>.SummeGesamtKosten(Sonstiges).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        return zahlen;
     }
 }

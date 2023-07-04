@@ -7,7 +7,7 @@ public class _43XHelper
 {
     public static ObservableCollection<RLTSystem> ÜbernehmeZeilenVonTabelle1(ObservableCollection<RLTSystem> tabelle)
     {
-        foreach (var zeile in Projekt.GetInstance().KGR43X.Tabelle1)
+        foreach (var zeile in Projekt.GetInstance().KGR43X.RLTTabelle1)
         {
             if (!tabelle.Any(system => (system.Name == zeile.Name)) & zeile.TotalPreis != 0)
             {
@@ -36,7 +36,7 @@ public class _43XHelper
 
     public static int GetSummeDynHeizung()
     {
-        ObservableCollection<RLTSystem> tabelle = Projekt.GetInstance().KGR43X.Tabelle2;
+        ObservableCollection<RLTSystem> tabelle = Projekt.GetInstance().KGR43X.RLTTabelle2;
 
         int summeDynHeizung = 0;
 
@@ -50,7 +50,7 @@ public class _43XHelper
 
     public static int GetSummeDynKälte()
     {
-        ObservableCollection<RLTSystem> tabelle1 = Projekt.GetInstance().KGR43X.Tabelle2;
+        ObservableCollection<RLTSystem> tabelle1 = Projekt.GetInstance().KGR43X.RLTTabelle2;
         //ObservableCollection<RLTSystem> tabelle2 = Projekt.GetInstance().KGR43X.Tabelle4;
 
         int summeDynHeizung = 0;
@@ -69,7 +69,7 @@ public class _43XHelper
 
     public static int GetSummeStatKälte()
     {
-        ObservableCollection<AktivFlächenSystem> tabelle = Projekt.GetInstance().KGR43X.Tabelle3;
+        ObservableCollection<AktivFlächenSystem> tabelle = Projekt.GetInstance().KGR43X.StatischeKalte;
 
         int summeDynHeizung = 0;
 

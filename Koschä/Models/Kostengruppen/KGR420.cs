@@ -4,61 +4,62 @@ using Koschä.Helpers;
 using Koschä.Models.Elemente;
 using System.Text.Json.Serialization;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace Koschä.Models.Kostengruppen;
 
 public class Kostengruppe420: IKostengruppe
 {
     [JsonInclude]
-    public ObservableCollection<AdaptivSystem> Tabelle1;
+    public ObservableCollection<AdaptivSystem> Statisches;
     [JsonInclude]
-    public ObservableCollection<AdaptivSystem> Tabelle2;
+    public ObservableCollection<AdaptivSystem> Thermoaktives;
     [JsonInclude]
-    public ObservableCollection<SystemTeil> Tabelle3;
+    public ObservableCollection<SystemTeil> Warmebereitstellung;
     [JsonInclude]
-    public ObservableCollection<SystemTeil> Tabelle4;
+    public ObservableCollection<SystemTeil> Warmeerzeugung;
 
     public Kostengruppe420()
     {
-        Tabelle1 = new ObservableCollection<AdaptivSystem>();
-        Tabelle2 = new ObservableCollection<AdaptivSystem>();
-        Tabelle3 = new ObservableCollection<SystemTeil>();
-        Tabelle4 = new ObservableCollection<SystemTeil>();
+        Statisches = new ObservableCollection<AdaptivSystem>();
+        Thermoaktives = new ObservableCollection<AdaptivSystem>();
+        Warmebereitstellung = new ObservableCollection<SystemTeil>();
+        Warmeerzeugung = new ObservableCollection<SystemTeil>();
     }
 
     public void Setup()
     {
         // DIE FLÄCHENWWERTE DER BEREICHE WERDEN NICHT GEUPDATED ???? Nur hier TODO:
-        Tabelle1 = KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(Tabelle1, "420");
-        Tabelle2 = KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(Tabelle2, "420");
-        if (Tabelle3.Count == 0) Tabelle3 = _420Helper.SetupTabelle3();
-        if (Tabelle4.Count == 0) Tabelle4 = _420Helper.SetupTabelle4();
+        Statisches = KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(Statisches, "420");
+        Thermoaktives = KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(Thermoaktives, "420");
+        if (Warmebereitstellung.Count == 0) Warmebereitstellung = _420Helper.SetupTabelle3();
+        if (Warmeerzeugung.Count == 0) Warmeerzeugung = _420Helper.SetupTabelle4();
     }
 
     public int GetAlleTabellenkosten()
     {
         int gesamtkosten = 0;
-        gesamtkosten += SystemGet<AdaptivSystem>.SummeGesamtKostenAdaptivSystem(Tabelle1);
-        gesamtkosten += SystemGet<AdaptivSystem>.SummeGesamtKostenAdaptivSystem(Tabelle2);
-        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle3);
-        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle4);
+        gesamtkosten += SystemGet<AdaptivSystem>.SummeGesamtKostenAdaptivSystem(Statisches);
+        gesamtkosten += SystemGet<AdaptivSystem>.SummeGesamtKostenAdaptivSystem(Thermoaktives);
+        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Warmebereitstellung);
+        gesamtkosten += SystemGet<SystemTeil>.SummeGesamtKosten(Warmeerzeugung);
         return gesamtkosten;
     }
 
     public void UpdateTabellen() //woanders hin vielleicht
     {
-        Tabelle3[0].Anzahl = AdaptivSysGet<AdaptivSystem>.SummeKW(Tabelle1);
-        Tabelle3[1].Anzahl = AdaptivSysGet<AdaptivSystem>.SummeKW(Tabelle2);
-        Tabelle3[2].Anzahl = _43XHelper.GetSummeDynHeizung();
+        Warmebereitstellung[0].Anzahl = AdaptivSysGet<AdaptivSystem>.SummeKW(Statisches);
+        Warmebereitstellung[1].Anzahl = AdaptivSysGet<AdaptivSystem>.SummeKW(Thermoaktives);
+        Warmebereitstellung[2].Anzahl = _43XHelper.GetSummeDynHeizung();
 
-        foreach (var zeile in Tabelle3) // damit Totalpreis Updated
+        foreach (var zeile in Warmebereitstellung) // damit Totalpreis Updated
         {
             zeile.Preis += 1;
             zeile.Preis -= 1;
         }
 
-        Tabelle4[0].Anzahl = SystemGet<SystemTeil>.SummeAnzahl(Tabelle3);
-        foreach (var zeile in Tabelle4)
+        Warmeerzeugung[0].Anzahl = SystemGet<SystemTeil>.SummeAnzahl(Warmebereitstellung);
+        foreach (var zeile in Warmeerzeugung)
         {
             zeile.Preis += 1;
             zeile.Preis -= 1;
@@ -67,10 +68,19 @@ public class Kostengruppe420: IKostengruppe
 
     public void Tab3AddSystem()
     {
-        Tabelle3.Add(new SystemTeil());
+        Warmebereitstellung.Add(new SystemTeil());
     }
     public void Tab4AddSystem()
     {
-        Tabelle4.Add(new SystemTeil());
+        Warmeerzeugung.Add(new SystemTeil());
+    }
+    public string[] UpdateGesamtKosten()
+    {
+        string[] zahlen = new string[4];
+        zahlen[0] = SystemGet<AdaptivSystem>.SummeGesamtKostenAdaptivSystem(Statisches).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        zahlen[1] = SystemGet<AdaptivSystem>.SummeGesamtKostenAdaptivSystem(Thermoaktives).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        zahlen[2] = SystemGet<SystemTeil>.SummeGesamtKosten(Warmebereitstellung).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        zahlen[3] = SystemGet<SystemTeil>.SummeGesamtKosten(Warmeerzeugung).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        return zahlen;
     }
 }

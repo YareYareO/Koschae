@@ -25,7 +25,7 @@
                 AlternatingRowBackground="#e6e6e6"
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
-                ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
+                ItemsSource="{x:Bind ViewModel.kgr.Statisches, Mode=OneWay}"
                 CellEditEnded="DataGrid_CellEditEnded"
                 Margin="20 10 0 0"
                 >
@@ -42,6 +42,7 @@
                 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+            <TextBlock Text="0" Name="StatischeHeizung" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
 
             <TextBlock Text="Thermoaktive Elemente" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid
@@ -51,7 +52,7 @@
                 AlternatingRowBackground="#e6e6e6"
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
-                ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
+                ItemsSource="{x:Bind ViewModel.kgr.Thermoaktives, Mode=OneWay}"
                 CellEditEnded="DataGrid_CellEditEnded"
                 Margin="20 10 0 0"
                 HorizontalAlignment="Left">
@@ -67,6 +68,7 @@
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+            <TextBlock Text="0" Name="Thermoaktiv" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
 
             <TextBlock Text="Wärmebereitstellung" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid
@@ -76,7 +78,7 @@
                 AlternatingRowBackground="#e6e6e6"
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
-                ItemsSource="{x:Bind ViewModel.kgr.Tabelle3, Mode=OneWay}"
+                ItemsSource="{x:Bind ViewModel.kgr.Warmebereitstellung, Mode=OneWay}"
                 Margin="20 10 0 0"
                 CellEditEnded="DataGrid_CellEditEnded"
                 HorizontalAlignment="Left">
@@ -90,7 +92,8 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Content="Neues System" Click="AddTab3Button_Click" Margin="30 10 0 0"/>
+            <Button Content="Neues System" Click="AddTab3Button_Click" Margin="30 5 0 0"/>
+            <TextBlock Text="0" Name="Warmebereitstellung" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
 
             <TextBlock Text="Wärmeerzeugung" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid
@@ -100,7 +103,7 @@
                 AlternatingRowBackground="#e6e6e6"
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
-                ItemsSource="{x:Bind ViewModel.kgr.Tabelle4, Mode=OneWay}"
+                ItemsSource="{x:Bind ViewModel.kgr.Warmeerzeugung, Mode=OneWay}"
                 Margin="20 10 0 0"
                 HorizontalAlignment="Left">
                 <controls:DataGrid.Columns>
@@ -112,7 +115,9 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Content="Neues System" Click="AddTab4Button_Click" Margin="30 10 0 0"/>
+            <Button Content="Neues System" Click="AddTab4Button_Click" Margin="30 5 0 0"/>
+            <TextBlock Text="0" Name="Warmeerzeugung" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
+                
             </StackPanel>
         </Grid>
     </ScrollViewer>

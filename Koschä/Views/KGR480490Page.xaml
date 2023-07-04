@@ -19,9 +19,10 @@
                     AlternatingRowBackground="#e6e6e6"
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
-                    ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
+                    ItemsSource="{x:Bind ViewModel.kgr.Gewerke, Mode=OneWay}"
                     Margin="20 10 0 0"
-                    HorizontalAlignment="Left">
+                    HorizontalAlignment="Left"
+                    CellEditEnded="DataGrid_CellEditEnded">
 
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Gewerk" IsReadOnly="True"/>
@@ -30,6 +31,7 @@
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="MSR-Technik"/>
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+            <TextBlock Text="0" Name="Gewerke" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
 
             <TextBlock Text="Sonstige Maßnahmen" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid 
@@ -39,9 +41,10 @@
                     AlternatingRowBackground="#e6e6e6"
                     BorderThickness="1"
                     BorderBrush="#e6e6e6"
-                    ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
+                    ItemsSource="{x:Bind ViewModel.kgr.Sonstiges, Mode=OneWay}"
                     Margin="20 10 0 0"
-                    HorizontalAlignment="Left">
+                    HorizontalAlignment="Left"
+                    CellEditEnded="DataGrid_CellEditEnded">
 
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Maßnahmen" />
@@ -50,8 +53,8 @@
                     <controls:DataGridTextColumn Binding="{Binding TotalPreis}" Header="Investitionskosten"/>
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
-            <Button Name="Tabelle1KGR410Button" Content="Neues System" Click="Tabelle1KGR410Button_Click" Margin="30 10 0 0"/>
-
+            <Button Name="Tabelle1KGR410Button" Content="Neues System" Click="Tabelle1KGR410Button_Click" Margin="30 5 0 0"/>
+            <TextBlock Text="0" Name="Sonstiges" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
             </StackPanel>
         </Grid>
         </ScrollViewer>

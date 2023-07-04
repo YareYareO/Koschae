@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Text.Json.Serialization;
 using Koschä.Helpers;
 using Koschä.Helpers.KGRHelper;
@@ -9,33 +10,33 @@ namespace Koschä.Models.Kostengruppen;
 public class Kostengruppe43X: IKostengruppe
 {
     [JsonInclude]
-    public ObservableCollection<DoppelSystem> Tabelle1;
+    public ObservableCollection<DoppelSystem> RLTTabelle1;
     [JsonInclude]
-    public ObservableCollection<RLTSystem> Tabelle2;
+    public ObservableCollection<RLTSystem> RLTTabelle2;
     [JsonInclude]
-    public ObservableCollection<AktivFlächenSystem> Tabelle3;
+    public ObservableCollection<AktivFlächenSystem> StatischeKalte;
     [JsonInclude]
-    public ObservableCollection<RLTSystem> Tabelle4;
+    public ObservableCollection<RLTSystem> SonderKalte;
     [JsonInclude]
-    public ObservableCollection<DoppelDoubleSystem> Tabelle5;
+    public ObservableCollection<DoppelDoubleSystem> KalteAnlagen;
 
     public Kostengruppe43X()
     {
-        Tabelle1 = new ObservableCollection<DoppelSystem>();
-        Tabelle2 = new ObservableCollection<RLTSystem>();
-        Tabelle3 = new ObservableCollection<AktivFlächenSystem>();
-        Tabelle4 = new ObservableCollection<RLTSystem>();
-        Tabelle5 = new ObservableCollection<DoppelDoubleSystem>();
+        RLTTabelle1 = new ObservableCollection<DoppelSystem>();
+        RLTTabelle2 = new ObservableCollection<RLTSystem>();
+        StatischeKalte = new ObservableCollection<AktivFlächenSystem>();
+        SonderKalte = new ObservableCollection<RLTSystem>();
+        KalteAnlagen = new ObservableCollection<DoppelDoubleSystem>();
     }
 
     public void Setup()
     {
-        Tabelle1 = KGRUpdate<DoppelSystem>.SystemTabelleUmBereiche(Tabelle1, "431");
-        Tabelle3 = KGRUpdate<AktivFlächenSystem>.SystemTabelleUmBereiche(Tabelle3, "432"); //hier auch bereiche nicht geupdated
+        RLTTabelle1 = KGRUpdate<DoppelSystem>.SystemTabelleUmBereiche(RLTTabelle1, "431");
+        StatischeKalte = KGRUpdate<AktivFlächenSystem>.SystemTabelleUmBereiche(StatischeKalte, "432"); //hier auch bereiche nicht geupdated
         
-        if (Tabelle5.Count == 0)
+        if (KalteAnlagen.Count == 0)
         {
-            Tabelle5 = _43XHelper.FügeKälteHinzu();
+            KalteAnlagen = _43XHelper.FügeKälteHinzu();
         }
 
     }
@@ -43,9 +44,9 @@ public class Kostengruppe43X: IKostengruppe
     public int GetAlleTabellenkosten()
     {
         int gesamtkosten = 0;
-        gesamtkosten += SystemGet<RLTSystem>.SummeGesamtKostenRLT(Tabelle2);
-        gesamtkosten += SystemGet<RLTSystem>.SummeAnzahl(Tabelle4);
-        gesamtkosten += SystemGet<DoppelDoubleSystem>.SummeGesamtKostenDoppelDoubleSystem(Tabelle5);
+        gesamtkosten += SystemGet<RLTSystem>.SummeGesamtKostenRLT(RLTTabelle2);
+        gesamtkosten += SystemGet<RLTSystem>.SummeAnzahl(SonderKalte);
+        gesamtkosten += SystemGet<DoppelDoubleSystem>.SummeGesamtKostenDoppelDoubleSystem(KalteAnlagen);
         return gesamtkosten;
     }
 
@@ -57,29 +58,37 @@ public class Kostengruppe43X: IKostengruppe
 
     private void UpdateTabelle2()
     {
-        Tabelle2 = _43XHelper.ÜbernehmeZeilenVonTabelle1(Tabelle2);
+        RLTTabelle2 = _43XHelper.ÜbernehmeZeilenVonTabelle1(RLTTabelle2);
         UpdateKGR420Tab3();
     }
 
     private void UpdateKGR420Tab3()
     {
         int wärme = _43XHelper.GetSummeDynHeizung();
-        if (Projekt.GetInstance().KGR420.Tabelle3.Count > 0)
+        if (Projekt.GetInstance().KGR420.Warmebereitstellung.Count > 0)
         {
-            Projekt.GetInstance().KGR420.Tabelle3[2].Anzahl = wärme;
+            Projekt.GetInstance().KGR420.Warmebereitstellung[2].Anzahl = wärme;
             
         }
     }
 
     private void UpdateTabelle5()
     {
-        Tabelle5 = _43XHelper.UpdateKälte(Tabelle5);
+        KalteAnlagen = _43XHelper.UpdateKälte(KalteAnlagen);
         
     }
 
     public void Tab4AddSystem()
     {
-        Tabelle4.Add(new RLTSystem());
+        SonderKalte.Add(new RLTSystem());
+    }
+    public string[] UpdateGesamtKosten()
+    {
+        string[] zahlen = new string[3];
+        zahlen[0] = SystemGet<RLTSystem>.SummeGesamtKostenRLT(RLTTabelle2).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        zahlen[1] = SystemGet<RLTSystem>.SummeAnzahl(SonderKalte).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        zahlen[2] = SystemGet<DoppelDoubleSystem>.SummeGesamtKostenDoppelDoubleSystem(KalteAnlagen).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        return zahlen;
     }
 
 }

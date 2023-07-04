@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text.Json.Serialization;
 using Koschä.Helpers;
 using Koschä.Helpers.KGRHelper;
@@ -28,4 +29,10 @@ public class Kostengruppe450: IKostengruppe
         return gesamtkosten;
     }
 
+    public string[] UpdateGesamtKosten()
+    {
+        string[] zahlen = new string[1];
+        zahlen[0] = SystemGet<SystemTeil>.SummeGesamtKosten(Tabelle).ToString("C", CultureInfo.CreateSpecificCulture("de-GER"));
+        return zahlen;
+    }
 }

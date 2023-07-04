@@ -20,9 +20,10 @@
                 AlternatingRowBackground="#e6e6e6"
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
-                ItemsSource="{x:Bind ViewModel.kgr.Tabelle2, Mode=OneWay}"
+                ItemsSource="{x:Bind ViewModel.kgr.Sprinkleranlagen, Mode=OneWay}"
                 Margin="20 10 0 0"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                CellEditEnded="DataGrid_CellEditEnded">
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Bereich" IsReadOnly="True"/>
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Sprinklerköpfe"/>
@@ -31,6 +32,7 @@
 
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
+            <TextBlock Text="0" Name="Sprinkleranlage" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
 
             <TextBlock Text="Feuerlöschanlagen" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid
@@ -40,9 +42,10 @@
                 AlternatingRowBackground="#e6e6e6"
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
-                ItemsSource="{x:Bind ViewModel.kgr.Tabelle3, Mode=OneWay}"
+                ItemsSource="{x:Bind ViewModel.kgr.Feuerloschanlagen, Mode=OneWay}"
                 Margin="20 10 0 0"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                CellEditEnded="DataGrid_CellEditEnded">
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Anlage" />
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Anzahl" />
@@ -53,9 +56,10 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Name="ButtonTab3" Click="ButtonTab3_Click" Content="Neue Zeile" Margin="30 10 0 0"/>
-
-            <TextBlock Text="Sonstige Nutzerspezifische Anlagen" FontSize="20" Margin="20 30 0 0"/>
+            <Button Name="ButtonTab3" Click="ButtonTab3_Click" Content="Neue Zeile" Margin="30 5 0 0"/>
+            <TextBlock Text="0" Name="Feuerloschanlage" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
+                
+                <TextBlock Text="Sonstige Nutzerspezifische Anlagen" FontSize="20" Margin="20 30 0 0"/>
             <controls:DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="All"
@@ -63,9 +67,10 @@
                 AlternatingRowBackground="#e6e6e6"
                 BorderThickness="1"
                 BorderBrush="#e6e6e6"
-                ItemsSource="{x:Bind ViewModel.kgr.Tabelle1, Mode=OneWay}"
+                ItemsSource="{x:Bind ViewModel.kgr.Sonstiges, Mode=OneWay}"
                 Margin="20 10 0 0"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                CellEditEnded="DataGrid_CellEditEnded">
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Binding="{Binding Name}" Header="Anlage" />
                     <controls:DataGridTextColumn Binding="{Binding Anzahl}" Header="Anzahl" />
@@ -75,7 +80,8 @@
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
 
-            <Button Name="ButtonTab1" Click="ButtonTab1_Click" Content="Neue Zeile" Margin="30 10 0 0"/>
+            <Button Name="ButtonTab1" Click="ButtonTab1_Click" Content="Neue Zeile" Margin="30 5 0 0"/>
+            <TextBlock Text="0" Name="Sonstiges" FontSize="20" HorizontalAlignment="Left" Margin="30 5 0 0"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

@@ -14,6 +14,16 @@ public sealed partial class KGR450Page : Page
     {
         ViewModel = App.GetService<KGR450ViewModel>();
         InitializeComponent();
+        GetUpdatedGesamtkosten();
     }
 
+    private void DataGrid_CellEditEnded(object sender, CommunityToolkit.WinUI.UI.Controls.DataGridCellEditEndedEventArgs e)
+    {
+        GetUpdatedGesamtkosten();
+    }
+    private void GetUpdatedGesamtkosten()
+    {
+        string[] zahlen = ViewModel.kgr.UpdateGesamtKosten();
+        Gesamtkosten.Text = zahlen[0];
+    }
 }
