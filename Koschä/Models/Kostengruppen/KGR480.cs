@@ -20,8 +20,8 @@ public class Kostengruppe480490: IKostengruppe
 
     public void Setup()
     {
-        if (Gewerke.Count == 0) Gewerke = _480Helper.SetupTabelle();
-        else Gewerke = _480Helper.UpdateTabelle(Gewerke);
+        if (Gewerke.Count == 0) _480Helper.SetupTabelle(ref Gewerke);
+        else _480Helper.UpdateTabelle(ref Gewerke);
     }
 
     public int GetAlleTabellenkosten()

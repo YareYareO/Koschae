@@ -5,9 +5,8 @@ using Koschä.Models.Elemente;
 namespace Koschä.Helpers.KGRHelper;
 public class _480Helper
 {
-    public static ObservableCollection<ProzentSystem> SetupTabelle()
+    public static void SetupTabelle(ref ObservableCollection<ProzentSystem> tabelle)
     {
-        ObservableCollection<ProzentSystem> tabelle = new ObservableCollection<ProzentSystem>();
 
         string[] namen = { "Sanitärtechnik", "Heizungstechnik", "Lüftungs- u. Kältetechnik", "Starkstromtechnik", "Fernmeldetechnik",
                             "Förderanlagen", "Nutzungsspezifische Anlagen"};
@@ -41,11 +40,11 @@ public class _480Helper
             tabelle.Add(system);
         }
 
-        return tabelle;
+        return;
 
     }
 
-    public static ObservableCollection<ProzentSystem> UpdateTabelle(ObservableCollection<ProzentSystem> tabelle)
+    public static void UpdateTabelle(ref ObservableCollection<ProzentSystem> tabelle)
     {
 
         IKostengruppe[] kgrref = Projekt.GetInstance().AlleKostengruppen;
@@ -64,6 +63,6 @@ public class _480Helper
                 }
             }
         }
-        return tabelle;
+        return;
     }
 }

@@ -5,7 +5,7 @@ using Koschä.Models;
 namespace Koschä.Helpers.KGRHelper;
 public class _43XHelper
 {
-    public static ObservableCollection<RLTSystem> ÜbernehmeZeilenVonTabelle1(ObservableCollection<RLTSystem> tabelle)
+    public static void ÜbernehmeZeilenVonTabelle1(ref ObservableCollection<RLTSystem> tabelle)
     {
         foreach (var zeile in Projekt.GetInstance().KGR43X.RLTTabelle1)
         {
@@ -18,7 +18,7 @@ public class _43XHelper
                 tabelle.Remove(FindRLTSystem(tabelle, zeile.Name));
             }
         }
-        return tabelle;
+        return;
     }
 
 
@@ -81,9 +81,8 @@ public class _43XHelper
         return summeDynHeizung;
     }
 
-    public static ObservableCollection<DoppelDoubleSystem> FügeKälteHinzu()
+    public static void FügeKälteHinzu(ref ObservableCollection<DoppelDoubleSystem> tabelle)
     {
-        ObservableCollection<DoppelDoubleSystem> tabelle = new ObservableCollection<DoppelDoubleSystem>();
 
         DoppelDoubleSystem doppelsystem = new DoppelDoubleSystem("Statische Kälte", a: GetSummeStatKälte(), p: 650, z: 0.8);
         DoppelDoubleSystem doppelsystem2 = new DoppelDoubleSystem("Dynamische Kälte", a: GetSummeDynKälte(), p: 100, z: 0.8);
@@ -95,9 +94,9 @@ public class _43XHelper
         tabelle.Add(doppelsystem3);
         tabelle.Add(doppelsystem4);
 
-        return tabelle;
+        return;
     }
-    public static ObservableCollection<DoppelDoubleSystem> UpdateKälte(ObservableCollection<DoppelDoubleSystem> tabelle)
+    public static void UpdateKälte(ref ObservableCollection<DoppelDoubleSystem> tabelle)
     {
         tabelle[0].Anzahl = GetSummeStatKälte();
         tabelle[1].Anzahl = GetSummeDynKälte();
@@ -110,6 +109,6 @@ public class _43XHelper
             item.Preis -= 1;
         }
 
-        return tabelle;
+        return;
     }
 } 

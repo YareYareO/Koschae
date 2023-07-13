@@ -21,8 +21,8 @@ public class Kostengruppe440: IKostengruppe
 
     public void Setup()
     {
-        Standard = KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(Standard, "440");
-        if(Energie.Count == 0) { Energie = _440Helper.UpdateTabelle2(); }
+        KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(ref Standard, "440");
+        if(Energie.Count == 0) { _440Helper.UpdateTabelle2(ref Energie); }
     }
 
     public int GetAlleTabellenkosten()

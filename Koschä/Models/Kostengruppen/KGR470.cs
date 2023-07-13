@@ -24,8 +24,8 @@ public class Kostengruppe470: IKostengruppe
 
     public void Setup()
     {
-        if(Sprinkleranlagen.Count == 0) Sprinkleranlagen = KGRUpdate<SystemTeil>.SystemTabelleUmAlleBereiche(Sprinkleranlagen);
-        if(Feuerloschanlagen.Count == 0) Feuerloschanlagen = _470Helper.UpdateTabelle3();
+        if(Sprinkleranlagen.Count == 0) KGRUpdate<SystemTeil>.SystemTabelleUmAlleBereiche(ref Sprinkleranlagen);
+        if(Feuerloschanlagen.Count == 0) _470Helper.UpdateTabelle3(ref Feuerloschanlagen);
 
     }
 

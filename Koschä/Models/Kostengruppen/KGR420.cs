@@ -30,10 +30,10 @@ public class Kostengruppe420: IKostengruppe
     public void Setup()
     {
         // DIE FLÄCHENWWERTE DER BEREICHE WERDEN NICHT GEUPDATED ???? Nur hier TODO:
-        Statisches = KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(Statisches, "420");
-        Thermoaktives = KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(Thermoaktives, "420");
-        if (Warmebereitstellung.Count == 0) Warmebereitstellung = _420Helper.SetupTabelle3();
-        if (Warmeerzeugung.Count == 0) Warmeerzeugung = _420Helper.SetupTabelle4();
+        KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(ref Statisches, "420");
+        KGRUpdate<AdaptivSystem>.SystemTabelleUmBereiche(ref Thermoaktives, "420");
+        if (Warmebereitstellung.Count == 0)  _420Helper.SetupTabelle3(ref Warmebereitstellung);
+        if (Warmeerzeugung.Count == 0) _420Helper.SetupTabelle4(ref Warmeerzeugung);
     }
 
     public int GetAlleTabellenkosten()

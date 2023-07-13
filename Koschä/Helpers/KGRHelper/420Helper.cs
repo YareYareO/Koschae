@@ -5,9 +5,8 @@ using Koschä.Models.Elemente;
 namespace Koschä.Helpers.KGRHelper;
 internal class _420Helper
 {
-    public static ObservableCollection<SystemTeil> SetupTabelle3()
+    public static void SetupTabelle3(ref ObservableCollection<SystemTeil> tabelle)
     {
-        ObservableCollection<SystemTeil> tabelle = new ObservableCollection<SystemTeil>();
 
         SystemTeil s1 = new SystemTeil("Statische HZG / dynamische HZG", 
             a: AdaptivSysGet<AdaptivSystem>.SummeKW(Projekt.GetInstance().KGR420.Statisches),
@@ -23,20 +22,19 @@ internal class _420Helper
         tabelle.Add(s2);
         tabelle.Add(s3);
 
-        return tabelle;
+        return;
     }
 
 
-    public static ObservableCollection<SystemTeil> SetupTabelle4()
+    public static void SetupTabelle4(ref ObservableCollection<SystemTeil> tabelle)
     {
-        ObservableCollection<SystemTeil> tabelle4 = new ObservableCollection<SystemTeil>();
 
         SystemTeil zeile = new SystemTeil("Fernwärmestation",
             a: SystemGet<SystemTeil>.SummeAnzahl(Projekt.GetInstance().KGR420.Warmebereitstellung),
             p:80);
 
-        tabelle4.Add(zeile);
+        tabelle.Add(zeile);
 
-        return tabelle4;
+        return;
     }
 }

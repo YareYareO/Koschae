@@ -4,7 +4,7 @@ using Koschä.Models.Elemente;
 namespace Koschä.Helpers.KGRHelper;
 internal class _410Helper
 {
-    public static ObservableCollection<SystemTeil> SetupTabelle2(ObservableCollection<SystemTeil> tabelle)
+    public static void SetupTabelle2(ref ObservableCollection<SystemTeil> tabelle)
     {
 
         if (!tabelle.Any(system => system.Name == "Druckerhöhungsanlagen"))
@@ -19,6 +19,6 @@ internal class _410Helper
                 tabelle.Add(new SystemTeil(namen[i], preise[i]));
             }
         }
-        return tabelle;
+        return;
     }
 }

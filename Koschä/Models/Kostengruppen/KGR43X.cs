@@ -31,12 +31,12 @@ public class Kostengruppe43X: IKostengruppe
 
     public void Setup()
     {
-        RLTTabelle1 = KGRUpdate<DoppelSystem>.SystemTabelleUmBereiche(RLTTabelle1, "431");
-        StatischeKalte = KGRUpdate<AktivFlächenSystem>.SystemTabelleUmBereiche(StatischeKalte, "432"); //hier auch bereiche nicht geupdated
+        KGRUpdate<DoppelSystem>.SystemTabelleUmBereiche(ref RLTTabelle1, "431");
+        KGRUpdate<AktivFlächenSystem>.SystemTabelleUmBereiche(ref StatischeKalte, "432"); //hier auch bereiche nicht geupdated
         
         if (KalteAnlagen.Count == 0)
         {
-            KalteAnlagen = _43XHelper.FügeKälteHinzu();
+            _43XHelper.FügeKälteHinzu(ref KalteAnlagen);
         }
 
     }
@@ -58,7 +58,7 @@ public class Kostengruppe43X: IKostengruppe
 
     private void UpdateTabelle2()
     {
-        RLTTabelle2 = _43XHelper.ÜbernehmeZeilenVonTabelle1(RLTTabelle2);
+        _43XHelper.ÜbernehmeZeilenVonTabelle1(ref RLTTabelle2);
         UpdateKGR420Tab3();
     }
 
@@ -74,7 +74,7 @@ public class Kostengruppe43X: IKostengruppe
 
     private void UpdateTabelle5()
     {
-        KalteAnlagen = _43XHelper.UpdateKälte(KalteAnlagen);
+        _43XHelper.UpdateKälte(ref KalteAnlagen);
         
     }
 

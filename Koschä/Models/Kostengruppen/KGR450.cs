@@ -19,7 +19,7 @@ public class Kostengruppe450: IKostengruppe
 
     public void Setup()
     {
-        Tabelle = KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(Tabelle, "450");
+        KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(ref Tabelle, "450");
     }
 
     public int GetAlleTabellenkosten()

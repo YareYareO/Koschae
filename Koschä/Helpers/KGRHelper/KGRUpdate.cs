@@ -6,7 +6,7 @@ using Koschä.Models.Elemente;
 namespace Koschä.Helpers;
 internal class KGRUpdate<T> where T : SystemTeil, new()
 {
-    public static ObservableCollection<T> SystemTabelleUmBereiche(ObservableCollection<T> tabelle, string kgrname)
+    public static void SystemTabelleUmBereiche(ref ObservableCollection<T> tabelle, string kgrname)
     {
         Dictionary<string, int> dict = getRichtigeDictionary(kgrname);
         foreach (var bereich in Projekt.GetInstance().AlleBereiche) 
@@ -51,7 +51,7 @@ internal class KGRUpdate<T> where T : SystemTeil, new()
                 tabelle.Remove(leerezeile);
             }
         }
-        return tabelle;
+        return;
     }
 
 
@@ -85,7 +85,7 @@ internal class KGRUpdate<T> where T : SystemTeil, new()
         return dictionary;
     }
 
-    public static ObservableCollection<T> SystemTabelleUmAlleBereiche(ObservableCollection<T> tabelle)
+    public static void SystemTabelleUmAlleBereiche(ref ObservableCollection<T> tabelle)
     {
         foreach (var bereich in Projekt.GetInstance().AlleBereiche)
         {
@@ -102,6 +102,6 @@ internal class KGRUpdate<T> where T : SystemTeil, new()
                 Debug.WriteLine("Instanz ist null");
             }
         }
-        return tabelle;
+        return;
     }
 }

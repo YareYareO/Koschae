@@ -21,8 +21,8 @@ public partial class Kostengruppe410 : IKostengruppe
 
     public void Setup()
     {
-        Sanitar = KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(Sanitar, "410");
-        if(Sonstiges.Count == 0) Sonstiges = _410Helper.SetupTabelle2(Sonstiges);
+        KGRUpdate<SystemTeil>.SystemTabelleUmBereiche(ref Sanitar, "410");
+        if(Sonstiges.Count == 0) _410Helper.SetupTabelle2(ref Sonstiges);
 
     }
 
